@@ -59,14 +59,11 @@ function showSignInSection() {
 // Add sign-out button click handler
 document.getElementById('signOutBtn')?.addEventListener('click', async function() {
     try {
-        // Get the current token
-        const token = await chrome.identity.getAuthToken({ interactive: false });
-        if (token) {
-            // Remove the token from Chrome's cache
-            await chrome.identity.removeCachedAuthToken({ token: token.token });
-        }
-        // Show sign-in section
-        showSignInSection();
+        // Send sign out message to service worker
+        chrome.runtime.sendMessage({ type: 'GOOGLE_SIGN_OUT' }, function(response) {
+            // Show sign-in section after sign out completes
+            showSignInSection();
+        });
     } catch (error) {
         console.error('Sign out error:', error);
         // Still show sign-in section even if there's an error
