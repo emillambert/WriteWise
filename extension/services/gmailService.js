@@ -119,13 +119,13 @@ class GmailService {
                 headers: { 'Authorization': `Bearer ${token}` }
             });
             const msgData = await msgRes.json();
-            // Extract headers and body
-            const headers = msgData.payload.headers;
+            // Check for payload and headers existence
+            const headers = msgData.payload && msgData.payload.headers ? msgData.payload.headers : [];
             const subject = this.getHeader(headers, 'Subject');
             const to = this.getHeader(headers, 'To');
             const from = this.getHeader(headers, 'From');
             const date = this.getHeader(headers, 'Date');
-            const body = this.decodeMessageBody(msgData.payload);
+            const body = this.decodeMessageBody(msgData.payload || {});
             return { subject, to, from, date, body, id: msg.id };
         }));
         return emails;

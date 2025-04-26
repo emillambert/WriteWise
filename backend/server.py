@@ -20,8 +20,9 @@ CORS(app, resources={r"/*": {
 }})
 
 # Ensure data directory exists
-if not os.path.exists('data'):
-    os.makedirs('data')
+data_dir = os.path.join('backend', 'data')
+if not os.path.exists(data_dir):
+    os.makedirs(data_dir)
 
 @app.route('/analyze', methods=['POST', 'OPTIONS'])
 def analyze():
@@ -39,10 +40,14 @@ def analyze():
             user_id = 'anonymous'
         # Sanitize user_id for filesystem (replace @ and . with _)
         safe_user_id = user_id.replace('@', '_').replace('.', '_')
-        filename = f'backend/data/data_{timestamp}_{safe_user_id}.json'
+        user_dir = os.path.join(data_dir, safe_user_id)
+        os.makedirs(user_dir, exist_ok=True)
+        data_filename = os.path.join(user_dir, f'data_{timestamp}.json')
+        tone_filename = os.path.join(user_dir, f'tone_{timestamp}.json')
+        context_filename = os.path.join(user_dir, f'context_{timestamp}.json')
         
         # Save the raw data to a file
-        with open(filename, 'w', encoding='utf-8') as f:
+        with open(data_filename, 'w', encoding='utf-8') as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
 
         # --- Tone analysis integration ---
@@ -50,14 +55,21 @@ def analyze():
         emails = data.get('emails', [])
         email_text = '\n\n'.join(email.get('body', '') for email in emails)
         tone_features = extract_email_features(email_text)
-        tone_filename = f'backend/data/tone_{timestamp}_{safe_user_id}.json'
         with open(tone_filename, 'w', encoding='utf-8') as f:
             json.dump(tone_features, f, indent=2, ensure_ascii=False)
         # --- End integration ---
         
+        # Optionally, save context (example: save the list of subjects)
+        context = {
+            'subjects': [email.get('subject', '') for email in emails],
+            'recipients': [email.get('to', '') for email in emails]
+        }
+        with open(context_filename, 'w', encoding='utf-8') as f:
+            json.dump(context, f, indent=2, ensure_ascii=False)
+        
         return jsonify({
             'status': 'success',
-            'message': f'Data saved to {filename}, tone analysis saved to {tone_filename}'
+            'message': f'Data saved to {data_filename}, tone analysis saved to {tone_filename}, context saved to {context_filename}'
         })
         
     except Exception as e:
