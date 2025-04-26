@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WriteWise - Get Started</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="onboarding.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">WriteWise</div>
+            <div class="tagline">Your Voice, Perfected</div>
+        </div>
+
+        <div class="main-content">
+            <!-- Get Started Section -->
+            <div id="get-started-section" class="section active">
+                <div class="welcome-content">
+                    <img src="https://via.placeholder.com/800x500/228B22/FFFFFF?text=Welcome+to+WriteWise" alt="Welcome" class="welcome-image">
+                    <h1 class="welcome-title">Welcome to WriteWise</h1>
+                    <p class="welcome-subtitle">Transform your email drafts into polished messages that reflect your unique style.</p>
+                    <button class="btn btn-primary" id="getStartedBtn">Get Started</button>
+                </div>
+            </div>
+
+            <!-- Terms of Service Section -->
+            <div id="tos-section" class="section">
+                <h2 class="section-title">Terms of Service</h2>
+                <div class="tos-content">
+                    <h3>What you need to know</h3>
+                    <ul>
+                        <li>WriteWise will analyze your email writing style to provide personalized suggestions</li>
+                        <li>Your data will be processed securely and never shared with third parties</li>
+                        <li>You can revoke access at any time through your Google account settings</li>
+                        <li>WriteWise is provided "as is" without warranties of any kind</li>
+                    </ul>
+                </div>
+                <div class="tos-checkbox">
+                    <input type="checkbox" id="tos" required>
+                    <label for="tos">I agree to the Terms of Service and Privacy Policy</label>
+                </div>
+                <div class="controls">
+                    <button class="btn btn-secondary" id="tosBackBtn">Back</button>
+                    <button class="btn btn-primary" id="agreeBtn" disabled>Agree & Continue</button>
+                </div>
+            </div>
+
+            <!-- Analysis Section -->
+            <div id="analysis-section" class="section">
+                <h2 class="section-title">Analyze Your Writing</h2>
+                <div class="welcome-content">
+                    <img src="https://via.placeholder.com/800x500/228B22/FFFFFF?text=Analysis" alt="Analysis" class="welcome-image">
+                    <p class="welcome-subtitle" style="max-width: 600px; margin: 0 auto 3rem;">
+                        WriteWise will analyze your previous emails to learn your unique writing style. 
+                        This helps us provide personalized suggestions that match your tone and voice.
+                    </p>
+                    <button class="btn btn-primary" id="analyzeBtn">Start Analysis</button>
+                </div>
+                <div class="controls">
+                    <button class="btn btn-secondary" id="analysisBackBtn">Back</button>
+                </div>
+            </div>
+
+            <!-- Sign In Section -->
+            <div id="signin-section" class="section">
+                <h2 class="section-title">Sign In</h2>
+                <button class="google-btn" id="googleSignInBtn" disabled>
+                    <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google">
+                    Sign in with Google
+                </button>
+                <div class="controls">
+                    <button class="btn btn-secondary" id="signInBackBtn">Back</button>
+                </div>
+            </div>
+
+            <!-- Tutorial Section -->
+            <div id="tutorial-section" class="section">
+                <div class="slides">
+                    <!-- Slide 1 -->
+                    <div class="slide active">
+                        <img src="https://via.placeholder.com/800x500/228B22/FFFFFF?text=WriteWise+Interface" alt="WriteWise Interface" class="slide-image">
+                        <h3 class="slide-title">WriteWise Interface</h3>
+                        <p class="slide-text">Access WriteWise directly from your email client with our easy-to-use interface.</p>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="slide">
+                        <img src="https://via.placeholder.com/800x500/A8E6CF/FFFFFF?text=Smart+Suggestions" alt="Smart Suggestions" class="slide-image">
+                        <h3 class="slide-title">Smart Suggestions</h3>
+                        <p class="slide-text">Get intelligent suggestions to improve your email's tone and clarity.</p>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="slide">
+                        <img src="https://via.placeholder.com/800x500/FFFDD0/FFFFFF?text=Personal+Style" alt="Personal Style" class="slide-image">
+                        <h3 class="slide-title">Your Personal Style</h3>
+                        <p class="slide-text">WriteWise learns from your writing to maintain your unique voice.</p>
+                    </div>
+
+                    <!-- Final Slide -->
+                    <div class="slide">
+                        <img src="https://via.placeholder.com/800x500/228B22/FFFFFF?text=Ready+to+Start" alt="Ready to Start" class="slide-image">
+                        <h3 class="slide-title">Ready to Get Started?</h3>
+                        <p class="slide-text">Try WriteWise now and transform your email writing experience.</p>
+                        <button class="btn btn-primary" id="tryNowBtn">Try it Now</button>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <button class="btn btn-secondary" id="prevSlideBtn">Back</button>
+                    
+                    <div class="progress">
+                        <div class="progress-dot active"></div>
+                        <div class="progress-dot"></div>
+                        <div class="progress-dot"></div>
+                        <div class="progress-dot"></div>
+                    </div>
+
+                    <div>
+                        <button class="btn btn-primary" id="nextSlideBtn">Next</button>
+                        <a href="#" id="skipTutorialBtn" class="skip-btn">Skip Tutorial</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="onboarding.js"></script>
+</body>
+</html> 

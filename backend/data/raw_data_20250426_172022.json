@@ -1,0 +1,13 @@
+{
+  "user_id": "anonymous",
+  "subject": "Re: Your trial ends tomorrow",
+  "content": "\n",
+  "recipients": {
+    "to": "no_reply@monday.com",
+    "cc": "",
+    "bcc": ""
+  },
+  "email_chain": "monday.com <team@use.mail.monday.com> Unsubscribe\nMon, Apr 21, 8:00 AM (5 days ago)\nto me\n\nYour trial\n\nends tomorrow\n\nThroughout your free trial, you’ve been able to utilize all the unbeatable monday dev features to produce your best work. Not to be dramatic, but all that will end tomorrow if you don’t choose a new plan.\n\nFinish signing up\n\nTo update your email notification settings, click here\n\nTo stop receiving any marketing emails, unsubscribe here\n\nWant to manage your work on the go?\n\nDownload the monday.com mobile app\n\n \n\n© 2024 monday.com | 111 E 18th st NY, NY, 10003, USA",
+  "is_reply": true,
+  "timestamp": "2025-04-26T15:20:22.043Z"
+}

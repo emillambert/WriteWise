@@ -1,0 +1,68 @@
+{
+    "manifest_version": 3,
+    "name": "WriteWise",
+    "version": "1.0",
+    "description": "Enhance your Gmail experience with WriteWise",
+    "icons": {
+        "16": "/logo/logo-16.png",
+        "48": "/logo/logo-48.png",
+        "128": "/logo/logo-128.png"
+    },
+    "options_page": "/settings/settings.html",
+    "action": {
+        "default_title": "WriteWise",
+        "default_popup": "/popup/popup.html",
+        "default_icon": {
+            "16": "/logo/logo-16.png",
+            "48": "/logo/logo-48.png",
+            "128": "/logo/logo-128.png"
+        }
+    },
+    "permissions": [
+        "storage",
+        "identity",
+        "scripting"
+    ],
+    "host_permissions": [
+        "https://mail.google.com/*",
+        "http://localhost:8000/*"
+    ],
+    "oauth2": {
+        "client_id": "641731081681-id6gblsjm80oag1onpl9vtakfihjk8q8.apps.googleusercontent.com",
+        "scopes": [
+            "https://www.googleapis.com/auth/gmail.readonly",
+            "https://www.googleapis.com/auth/userinfo.email",
+            "https://www.googleapis.com/auth/userinfo.profile"
+        ]
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://mail.google.com/*"],
+            "js": [
+                "/lib/jquery.min.js",
+                "/lib/gmail.js",
+                "/content-scripts/gmail.js"
+            ],
+            "css": ["/content-scripts/gmail.css", "/styles.css"]
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "popup/*",
+                "logo/*",
+                "lib/*",
+                "content-scripts/*",
+                "styles.css"
+            ],
+            "matches": ["*://mail.google.com/*"]
+        }
+    ],
+    "background": {
+        "service_worker": "service-worker.js",
+        "type": "module"
+    },
+    "content_security_policy": {
+        "extension_pages": "script-src 'self'; object-src 'self'"
+    }
+}

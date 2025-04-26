@@ -1,0 +1,28 @@
+.writewise-button {
+    background: #228B22 !important;
+    border: none !important;
+    border-radius: 50% !important;
+    width: 32px !important;
+    height: 32px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    margin-right: 8px !important;
+    position: relative !important;
+    z-index: 9999 !important;
+    padding: 0 !important;
+    min-width: 32px !important;
+    min-height: 32px !important;
+}
+
+.writewise-button:hover {
+    background: #1a6b1a !important;
+}
+
+.writewise-button img {
+    width: 16px !important;
+    height: 16px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+} 

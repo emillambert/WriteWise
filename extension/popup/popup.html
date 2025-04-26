@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WriteWise - Sign In</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            width: 320px;
+            height: 400px;
+            margin: 0;
+            padding: 0;
+            font-family: 'Open Sans', sans-serif;
+            background-color: #F5F5F5;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            padding: 12px;
+            border-bottom: 1px solid #E5E5E5;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo {
+            width: 32px;
+            height: 32px;
+            background-color: #228B22;
+            color: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .title {
+            font-family: 'Merriweather', serif;
+            font-weight: bold;
+            color: #228B22;
+            font-size: 18px;
+        }
+
+        .content {
+            flex: 1;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .welcome {
+            font-family: 'Merriweather', serif;
+            font-weight: bold;
+            color: #228B22;
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+
+        .tagline {
+            color: #006400;
+            font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .description {
+            color: #666;
+            font-size: 12px;
+            margin-bottom: 24px;
+            max-width: 240px;
+        }
+
+        .signin-button {
+            background-color: #228B22;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s;
+            text-decoration: none;
+        }
+
+        .signin-button:hover {
+            background-color: #006400;
+        }
+
+        .footer {
+            padding: 12px;
+            border-top: 1px solid #E5E5E5;
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        .footer-link {
+            color: #666;
+            font-size: 12px;
+            text-decoration: none;
+        }
+
+        .footer-link:hover {
+            color: #228B22;
+        }
+
+        /* Menu Styles */
+        .menu-section {
+            display: none;
+            flex: 1;
+            padding: 16px;
+        }
+
+        .menu-section.active {
+            display: block;
+        }
+
+        .menu-content {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .profile-section {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background: white;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+
+        .profile-picture {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .profile-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: #1A1A1A;
+        }
+
+        .menu-item {
+            padding: 12px;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .menu-item:hover {
+            background-color: #E8F5E9;
+        }
+
+        .menu-item img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .menu-item span {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .sign-out-button {
+            margin-top: auto;
+            padding: 12px;
+            color: #666;
+            font-size: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .sign-out-button:hover {
+            color: #228B22;
+        }
+
+        /* Progress Bar Styles */
+        .progress-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 16px;
+        }
+
+        .progress-circle {
+            width: 100%;
+            height: 100%;
+            transform: rotate(-90deg);
+        }
+
+        .progress-circle circle {
+            fill: none;
+            stroke-width: 8;
+            stroke-linecap: round;
+        }
+
+        .progress-circle-bg {
+            stroke: #E5E5E5;
+        }
+
+        .progress-circle-fill {
+            stroke: #228B22;
+            transition: stroke-dashoffset 0.3s ease;
+        }
+
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 16px;
+            font-weight: 600;
+            color: #228B22;
+            text-align: center;
+            line-height: 1.2;
+            width: 100%;
+        }
+
+        .progress-count {
+            font-size: 24px;
+            font-weight: 700;
+            display: block;
+        }
+
+        .progress-label {
+            font-size: 14px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">W</div>
+        <div class="title">WriteWise</div>
+    </div>
+
+    <!-- Sign In Section -->
+    <div class="content" id="signin-section">
+        <div class="welcome">Welcome to WriteWise</div>
+        <div class="tagline">Your Voice, Perfected</div>
+        <div class="description">
+            Sign in to start crafting emails with personal precision
+        </div>
+        <a href="onboarding.html" target="_blank" class="signin-button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
+            </svg>
+            Sign In
+        </a>
+    </div>
+
+    <!-- Menu Section -->
+    <div class="menu-section" id="menu-section">
+        <div class="menu-content">
+            <div class="profile-section">
+                <img id="profilePicture" class="profile-picture" src="" alt="Profile">
+                <span id="profileName" class="profile-name"></span>
+            </div>
+            <div class="progress-container">
+                <svg class="progress-circle" viewBox="0 0 36 36">
+                    <path class="progress-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#E5E5E5" stroke-width="3"/>
+                    <path class="progress-circle-fill" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#228B22" stroke-width="3" stroke-dasharray="100, 100"/>
+                </svg>
+                <div class="progress-text">
+                    <span class="progress-count">0</span>
+                    <span class="progress-label">suggestions left</span>
+                </div>
+            </div>
+            <div class="menu-item" id="analyzeBtn">
+                <img src="../assets/analyze-icon.svg" alt="Analyze">
+                <span>Analyze My Writing</span>
+            </div>
+            <div class="sign-out-button" id="signOutBtn">Sign Out</div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <a href="https://writewise.app/help" target="_blank" class="footer-link">Help</a>
+        <a href="https://writewise.app/privacy" target="_blank" class="footer-link">Privacy</a>
+        <a href="https://writewise.app/terms" target="_blank" class="footer-link">Terms</a>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+</html>

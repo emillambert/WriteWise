@@ -1,0 +1,97 @@
+// Section navigation
+function showSection(sectionId) {
+    document.querySelectorAll('.section').forEach(section => {
+        section.classList.remove('active');
+    });
+    document.getElementById(sectionId).classList.add('active');
+}
+
+// Tutorial slides
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slide');
+const progressDots = document.querySelectorAll('.progress-dot');
+
+function showSlide(n) {
+    slides.forEach(slide => slide.classList.remove('active'));
+    progressDots.forEach(dot => dot.classList.remove('active'));
+    
+    currentSlide = n;
+    slides[n].classList.add('active');
+    progressDots[n].classList.add('active');
+}
+
+function nextSlide() {
+    if (currentSlide < slides.length - 1) {
+        showSlide(currentSlide + 1);
+    }
+}
+
+function prevSlide() {
+    if (currentSlide > 0) {
+        showSlide(currentSlide - 1);
+    }
+}
+
+function openGmail() {
+    window.open('https://mail.google.com', '_blank');
+}
+
+// Event Listeners
+document.addEventListener('DOMContentLoaded', function() {
+    // Get Started button
+    document.getElementById('getStartedBtn').addEventListener('click', () => {
+        showSection('tos-section');
+    });
+
+    // TOS section
+    const tosCheckbox = document.getElementById('tos');
+    const agreeBtn = document.getElementById('agreeBtn');
+    const googleSignInBtn = document.getElementById('googleSignInBtn');
+    
+    tosCheckbox.addEventListener('change', () => {
+        agreeBtn.disabled = !tosCheckbox.checked;
+        googleSignInBtn.disabled = !tosCheckbox.checked;
+    });
+
+    document.getElementById('tosBackBtn').addEventListener('click', () => {
+        showSection('get-started-section');
+    });
+
+    document.getElementById('agreeBtn').addEventListener('click', () => {
+        showSection('signin-section');
+    });
+
+    // Sign In section
+    document.getElementById('signInBackBtn').addEventListener('click', () => {
+        showSection('tos-section');
+    });
+
+    document.getElementById('googleSignInBtn').addEventListener('click', async () => {
+        try {
+            const token = await chrome.identity.getAuthToken({ interactive: true });
+            if (token) {
+                showSection('analysis-section');
+            }
+        } catch (error) {
+            console.error('Sign in error:', error);
+        }
+    });
+
+    // Analysis section
+    document.getElementById('analysisBackBtn').addEventListener('click', () => {
+        showSection('signin-section');
+    });
+
+    document.getElementById('analyzeBtn').addEventListener('click', () => {
+        showSection('tutorial-section');
+    });
+
+    // Tutorial section
+    document.getElementById('prevSlideBtn').addEventListener('click', prevSlide);
+    document.getElementById('nextSlideBtn').addEventListener('click', nextSlide);
+    document.getElementById('skipTutorialBtn').addEventListener('click', openGmail);
+    document.getElementById('tryNowBtn').addEventListener('click', openGmail);
+
+    // Initialize first slide
+    showSlide(0);
+}); 

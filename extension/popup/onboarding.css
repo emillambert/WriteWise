@@ -1,0 +1,313 @@
+:root {
+    --primary: #228B22;
+    --primary-dark: #006400;
+    --primary-light: #E8F5E9;
+    --secondary: #A8E6CF;
+    --accent: #FFFDD0;
+    --text-primary: #1A1A1A;
+    --text-secondary: #666666;
+    --background: #FFFFFF;
+    --border: #E5E7EB;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background);
+    color: var(--text-primary);
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    padding: 2rem 0;
+    text-align: center;
+    border-bottom: 1px solid var(--border);
+}
+
+.logo {
+    font-family: 'Merriweather', serif;
+    font-size: 2.5rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.tagline {
+    color: var(--text-secondary);
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 0;
+}
+
+.section {
+    display: none;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.section.active {
+    display: block;
+}
+
+.welcome-content {
+    text-align: center;
+}
+
+.welcome-image {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.welcome-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    font-family: 'Merriweather', serif;
+}
+
+.welcome-subtitle {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    width: 300px;
+    margin: 0 auto;
+    transition: all 0.2s ease;
+}
+
+.google-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.google-btn:hover:not(:disabled) {
+    background: var(--primary-light);
+    border-color: var(--primary);
+}
+
+.google-btn img {
+    width: 20px;
+    margin-right: 12px;
+}
+
+.tos-content {
+    background: var(--primary-light);
+    padding: 2rem;
+    border-radius: 12px;
+    margin: 2rem 0;
+    text-align: left;
+}
+
+.tos-content h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    font-size: 1.25rem;
+}
+
+.tos-content ul {
+    list-style: none;
+    margin-left: 1rem;
+}
+
+.tos-content li {
+    margin-bottom: 0.75rem;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.tos-content li:before {
+    content: "•";
+    color: var(--primary);
+    position: absolute;
+    left: 0;
+}
+
+.tos-checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.tos-checkbox input {
+    margin-right: 12px;
+    width: 18px;
+    height: 18px;
+}
+
+.tos-checkbox label {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+.slide {
+    display: none;
+    text-align: center;
+}
+
+.slide.active {
+    display: block;
+}
+
+.slide-image {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.slide-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    font-family: 'Merriweather', serif;
+}
+
+.slide-text {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto 3rem;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 3rem;
+    padding: 0 2rem;
+}
+
+.progress {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+
+.progress-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--border);
+    transition: all 0.2s ease;
+}
+
+.progress-dot.active {
+    background: var(--primary);
+    transform: scale(1.2);
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.2s ease;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background: var(--primary-dark);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--text-secondary);
+}
+
+.btn-secondary:hover {
+    color: var(--text-primary);
+}
+
+.skip-btn {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 1rem;
+    margin-left: 1rem;
+}
+
+.skip-btn:hover {
+    color: var(--text-primary);
+}
+
+.section-title {
+    font-family: 'Merriweather', serif;
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 1rem;
+    }
+
+    .welcome-title {
+        font-size: 2.5rem;
+    }
+
+    .welcome-subtitle {
+        font-size: 1.125rem;
+    }
+
+    .controls {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .btn {
+        width: 100%;
+    }
+} 
