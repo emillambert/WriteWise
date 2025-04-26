@@ -21,6 +21,7 @@
     "permissions": [
         "storage",
         "identity",
+        "identity.email",
         "scripting"
     ],
     "host_permissions": [

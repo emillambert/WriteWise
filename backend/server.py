@@ -3,6 +3,7 @@ from flask_cors import CORS
 import os
 import json
 from datetime import datetime
+from tone_analysis import extract_email_features
 
 app = Flask(__name__)
 
@@ -34,17 +35,29 @@ def analyze():
         # Generate filename with timestamp and user_id
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
         user_id = data.get('user_id', 'anonymous')
+        if not isinstance(user_id, str):
+            user_id = 'anonymous'
         # Sanitize user_id for filesystem (replace @ and . with _)
         safe_user_id = user_id.replace('@', '_').replace('.', '_')
-        filename = f'data/data_{timestamp}_{safe_user_id}.json'
+        filename = f'backend/data/data_{timestamp}_{safe_user_id}.json'
         
         # Save the raw data to a file
         with open(filename, 'w', encoding='utf-8') as f:
             json.dump(data, f, indent=2, ensure_ascii=False)
+
+        # --- Tone analysis integration ---
+        # Concatenate all email bodies for tone analysis
+        emails = data.get('emails', [])
+        email_text = '\n\n'.join(email.get('body', '') for email in emails)
+        tone_features = extract_email_features(email_text)
+        tone_filename = f'backend/data/tone_{timestamp}_{safe_user_id}.json'
+        with open(tone_filename, 'w', encoding='utf-8') as f:
+            json.dump(tone_features, f, indent=2, ensure_ascii=False)
+        # --- End integration ---
         
         return jsonify({
             'status': 'success',
-            'message': f'Data saved to {filename}'
+            'message': f'Data saved to {filename}, tone analysis saved to {tone_filename}'
         })
         
     except Exception as e:

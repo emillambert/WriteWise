@@ -1,0 +1,71 @@
+{
+  "word_count": 15,
+  "sentence_count": 1,
+  "common_words": [
+    [
+      "this",
+      2
+    ],
+    [
+      "hey",
+      1
+    ],
+    [
+      "is",
+      1
+    ],
+    [
+      "a",
+      1
+    ],
+    [
+      "test",
+      1
+    ],
+    [
+      "message",
+      1
+    ],
+    [
+      "was",
+      1
+    ],
+    [
+      "automatically",
+      1
+    ],
+    [
+      "generated",
+      1
+    ],
+    [
+      "by",
+      1
+    ]
+  ],
+  "common_phrases": [
+    "this",
+    "a test",
+    "This message",
+    "Gmail"
+  ],
+  "pos_counts": {
+    "INTJ": 1,
+    "PRON": 1,
+    "AUX": 2,
+    "DET": 2,
+    "NOUN": 2,
+    "SPACE": 2,
+    "ADV": 1,
+    "VERB": 1,
+    "ADP": 1,
+    "PROPN": 1,
+    "PUNCT": 1
+  },
+  "sentiment": 0.0,
+  "subjectivity": 0.0,
+  "exclamation_count": 0,
+  "question_count": 0,
+  "avg_sentence_length": 15.0,
+  "paragraph_count": 1
+}

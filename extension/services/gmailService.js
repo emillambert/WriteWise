@@ -31,15 +31,15 @@ class GmailService {
             );
 
             return {
-                subject: this.getHeader(message.payload.headers, 'Subject'),
+                subject: message.payload && message.payload.headers ? this.getHeader(message.payload.headers, 'Subject') : '',
                 content: this.decodeMessageBody(message.payload),
                 recipients: {
-                    to: this.getHeader(message.payload.headers, 'To'),
-                    cc: this.getHeader(message.payload.headers, 'Cc'),
-                    bcc: this.getHeader(message.payload.headers, 'Bcc')
+                    to: message.payload && message.payload.headers ? this.getHeader(message.payload.headers, 'To') : '',
+                    cc: message.payload && message.payload.headers ? this.getHeader(message.payload.headers, 'Cc') : '',
+                    bcc: message.payload && message.payload.headers ? this.getHeader(message.payload.headers, 'Bcc') : ''
                 },
                 emailChain: emailChain.map(msg => ({
-                    from: this.getHeader(msg.payload.headers, 'From'),
+                    from: msg.payload && msg.payload.headers ? this.getHeader(msg.payload.headers, 'From') : '',
                     content: this.decodeMessageBody(msg.payload)
                 })),
                 isReply: thread.messages.length > 1
@@ -82,11 +82,14 @@ class GmailService {
         if (payload.parts) {
             // Get the plain text part
             const textPart = payload.parts.find(part => part.mimeType === 'text/plain');
-            if (textPart) {
+            if (textPart && textPart.body && textPart.body.data) {
                 return atob(textPart.body.data.replace(/-/g, '+').replace(/_/g, '/'));
             }
         }
-        return atob(payload.body.data.replace(/-/g, '+').replace(/_/g, '/'));
+        if (payload.body && payload.body.data) {
+            return atob(payload.body.data.replace(/-/g, '+').replace(/_/g, '/'));
+        }
+        return ''; // or null, or throw an error, depending on your needs
     }
 
     async getAccessToken() {

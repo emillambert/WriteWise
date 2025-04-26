@@ -40,7 +40,7 @@ function openGmail() {
 
 async function sendEmailsToServer(emails, userId) {
     const timestamp = new Date().toISOString().replace(/[-:.TZ]/g, '').slice(0, 15);
-    const safeUserId = userId.replace(/[@.]/g, '_');
+    const safeUserId = typeof userId === 'string' ? userId.replace(/[@.]/g, '_') : 'anonymous';
     const data = {
         user_id: userId,
         emails: emails
@@ -51,6 +51,18 @@ async function sendEmailsToServer(emails, userId) {
         body: JSON.stringify(data)
     });
     return response.ok;
+}
+
+async function getUserEmailFallback() {
+    return new Promise((resolve) => {
+        if (chrome.identity && chrome.identity.getProfileUserInfo) {
+            chrome.identity.getProfileUserInfo({accountStatus: 'ANY'}, function(userInfo) {
+                resolve(userInfo.email || null);
+            });
+        } else {
+            resolve(null);
+        }
+    });
 }
 
 // Event Listeners
@@ -106,7 +118,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const userProfile = await fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
                 headers: { 'Authorization': `Bearer ${token}` }
             }).then(res => res.json());
-            const userId = userProfile.email || 'anonymous';
+            let userId = userProfile.email;
+            if (!userId) {
+                userId = await getUserEmailFallback();
+            }
+            userId = userId || 'anonymous';
             await sendEmailsToServer(emails, userId);
             showSection('tutorial-section');
         } catch (error) {
