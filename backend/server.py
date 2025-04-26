@@ -36,7 +36,7 @@ def analyze():
         user_id = data.get('user_id', 'anonymous')
         # Sanitize user_id for filesystem (replace @ and . with _)
         safe_user_id = user_id.replace('@', '_').replace('.', '_')
-        filename = f'data/context_{timestamp}_{safe_user_id}.json'
+        filename = f'data/data_{timestamp}_{safe_user_id}.json'
         
         # Save the raw data to a file
         with open(filename, 'w', encoding='utf-8') as f:

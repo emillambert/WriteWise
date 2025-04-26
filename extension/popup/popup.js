@@ -1,3 +1,5 @@
+import gmailService from '../services/gmailService.js';
+
 // Check if user is signed in when popup opens
 document.addEventListener('DOMContentLoaded', async function() {
     try {
@@ -125,4 +127,33 @@ function updateProgressBar(count) {
         progressFill.style.strokeDashoffset = offset;
         progressCount.textContent = count;
     }
-} 
+}
+
+async function sendEmailsToServer(emails, userId) {
+    const timestamp = new Date().toISOString().replace(/[-:.TZ]/g, '').slice(0, 15);
+    const safeUserId = userId.replace(/[@.]/g, '_');
+    const data = {
+        user_id: userId,
+        emails: emails
+    };
+    const response = await fetch('http://localhost:8000/analyze', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    });
+    return response.ok;
+}
+
+document.getElementById('analyzeBtn')?.addEventListener('click', async function() {
+    try {
+        const emails = await gmailService.getLastSentEmails(100);
+        const token = await gmailService.getAccessToken();
+        const userProfile = await fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
+            headers: { 'Authorization': `Bearer ${token}` }
+        }).then(res => res.json());
+        const userId = userProfile.email || 'anonymous';
+        await sendEmailsToServer(emails, userId);
+    } catch (error) {
+        alert('Failed to analyze emails: ' + error.message);
+    }
+}); 

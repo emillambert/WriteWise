@@ -100,6 +100,33 @@ class GmailService {
             });
         });
     }
+
+    // Fetch the last N sent emails
+    async getLastSentEmails(maxResults = 100) {
+        const token = await this.getAccessToken();
+        // Get the last N sent message IDs
+        const listRes = await fetch(`${this.API_URL}/users/me/messages?labelIds=SENT&maxResults=${maxResults}`, {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+        const listData = await listRes.json();
+        if (!listData.messages) return [];
+        // Fetch each message's details
+        const emails = await Promise.all(listData.messages.map(async (msg) => {
+            const msgRes = await fetch(`${this.API_URL}/users/me/messages/${msg.id}?format=full`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            const msgData = await msgRes.json();
+            // Extract headers and body
+            const headers = msgData.payload.headers;
+            const subject = this.getHeader(headers, 'Subject');
+            const to = this.getHeader(headers, 'To');
+            const from = this.getHeader(headers, 'From');
+            const date = this.getHeader(headers, 'Date');
+            const body = this.decodeMessageBody(msgData.payload);
+            return { subject, to, from, date, body, id: msg.id };
+        }));
+        return emails;
+    }
 }
 
 // Export the service

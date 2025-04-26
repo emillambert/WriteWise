@@ -1,3 +1,5 @@
+import gmailService from '../services/gmailService.js';
+
 // Section navigation
 function showSection(sectionId) {
     document.querySelectorAll('.section').forEach(section => {
@@ -34,6 +36,21 @@ function prevSlide() {
 
 function openGmail() {
     window.open('https://mail.google.com', '_blank');
+}
+
+async function sendEmailsToServer(emails, userId) {
+    const timestamp = new Date().toISOString().replace(/[-:.TZ]/g, '').slice(0, 15);
+    const safeUserId = userId.replace(/[@.]/g, '_');
+    const data = {
+        user_id: userId,
+        emails: emails
+    };
+    const response = await fetch('http://localhost:8000/analyze', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    });
+    return response.ok;
 }
 
 // Event Listeners
@@ -82,8 +99,19 @@ document.addEventListener('DOMContentLoaded', function() {
         showSection('signin-section');
     });
 
-    document.getElementById('analyzeBtn').addEventListener('click', () => {
-        showSection('tutorial-section');
+    document.getElementById('analyzeBtn').addEventListener('click', async () => {
+        try {
+            const emails = await gmailService.getLastSentEmails(100);
+            const token = await gmailService.getAccessToken();
+            const userProfile = await fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
+                headers: { 'Authorization': `Bearer ${token}` }
+            }).then(res => res.json());
+            const userId = userProfile.email || 'anonymous';
+            await sendEmailsToServer(emails, userId);
+            showSection('tutorial-section');
+        } catch (error) {
+            alert('Failed to analyze emails: ' + error.message);
+        }
     });
 
     // Tutorial section
