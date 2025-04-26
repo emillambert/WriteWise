@@ -31,9 +31,12 @@ def analyze():
         # Get the raw data from the request
         data = request.get_json()
         
-        # Generate filename with timestamp
+        # Generate filename with timestamp and user_id
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-        filename = f'data/raw_data_{timestamp}.json'
+        user_id = data.get('user_id', 'anonymous')
+        # Sanitize user_id for filesystem (replace @ and . with _)
+        safe_user_id = user_id.replace('@', '_').replace('.', '_')
+        filename = f'data/context_{timestamp}_{safe_user_id}.json'
         
         # Save the raw data to a file
         with open(filename, 'w', encoding='utf-8') as f:
