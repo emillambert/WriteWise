@@ -3,6 +3,11 @@ from flask_cors import CORS
 import os
 import json
 from datetime import datetime
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
 from feature_extraction import extract_email_features
 from tone_classification import classify_tone_axes
 from profile_aggregation import aggregate_user_profile

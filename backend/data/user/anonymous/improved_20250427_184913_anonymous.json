@@ -1,0 +1,7 @@
+{
+  "subject": "API Key Error",
+  "email": "The OpenAI API key is missing. Please check the server console for instructions.",
+  "cluster": "Error",
+  "error": "Missing API key",
+  "validation": {}
+}

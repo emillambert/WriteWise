@@ -5,7 +5,9 @@ import requests
 from datetime import datetime
 from style_validator import validate_style_match, improve_style_match
 
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "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")
+# Get API key from environment variable without a fallback 
+# so it's clear when it's not set properly
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 # Helper to find the latest file with a given prefix in a directory
 def get_latest_file(user_dir, prefix):
@@ -135,6 +137,28 @@ def query_chatgpt(prompt, recipients, profile, content, subject=""):
     Returns:
         dict: Improved email with subject line
     """
+    # Check if API key is available
+    if not OPENAI_API_KEY:
+        error_message = (
+            "OpenAI API key is not set. Please set the OPENAI_API_KEY environment variable.\n\n"
+            "Two ways to fix this:\n"
+            "1. Create a .env file in the backend directory with this content:\n"
+            "   OPENAI_API_KEY=your_api_key_here\n\n"
+            "2. Or set the environment variable in your terminal:\n"
+            "   export OPENAI_API_KEY=your_api_key_here\n\n"
+            "You can get an API key from https://platform.openai.com/api-keys\n\n"
+            "After setting the API key, restart the server."
+        )
+        print("\n" + "!" * 80)
+        print(error_message)
+        print("!" * 80 + "\n")
+        return {
+            "subject": "API Key Error",
+            "email": "The OpenAI API key is missing. Please check the server console for instructions.",
+            "cluster": "Error",
+            "error": "Missing API key"
+        }
+    
     url = "https://api.openai.com/v1/chat/completions"
     headers = {
         "Authorization": f"Bearer {OPENAI_API_KEY}",
@@ -232,7 +256,32 @@ def query_chatgpt(prompt, recipients, profile, content, subject=""):
     
     try:
         response = requests.post(url, headers=headers, json=data)
+        
+        # Check for authorization issues specifically
+        if response.status_code == 401:
+            error_message = (
+                "OpenAI API Authorization Error (401):\n\n"
+                "Your API key is invalid or expired. Please update it using one of these methods:\n\n"
+                "1. Update the .env file in the backend directory with:\n"
+                "   OPENAI_API_KEY=your_new_api_key_here\n\n"
+                "2. Or set the environment variable in your terminal:\n"
+                "   export OPENAI_API_KEY=your_new_api_key_here\n\n"
+                "You can get a new API key from https://platform.openai.com/api-keys\n\n"
+                "After updating the API key, restart the server."
+            )
+            print("\n" + "!" * 80)
+            print(error_message) 
+            print("!" * 80 + "\n")
+            return {
+                "subject": "API Authorization Error",
+                "email": "There was an authorization error when connecting to OpenAI's API. Your API key may be invalid or expired. Please check the server console for instructions.",
+                "cluster": "Error",
+                "error": f"API Authorization Error: {response.text}"
+            }
+        
+        # Handle other error codes
         response.raise_for_status()
+        
         reply = response.json()["choices"][0]["message"]["content"]
         
         # Try to extract the JSON portion if mixed with text
@@ -267,10 +316,14 @@ def query_chatgpt(prompt, recipients, profile, content, subject=""):
                 "cluster": "Unknown",
                 "parsing_error": "No JSON found in response"
             }
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
+        error_message = f"API request error: {str(e)}"
+        print("\n" + "!" * 50)
+        print(error_message)
+        print("!" * 50 + "\n")
         return {
             "subject": "Error: API request failed",
-            "email": f"An error occurred: {str(e)}",
+            "email": f"An error occurred when connecting to OpenAI's API: {str(e)}",
             "cluster": "Error",
             "error": str(e)
         }

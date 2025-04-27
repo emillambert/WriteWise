@@ -1,0 +1,7 @@
+{
+  "subject": "Error: API request failed",
+  "email": "An error occurred: 401 Client Error: Unauthorized for url: https://api.openai.com/v1/chat/completions",
+  "cluster": "Error",
+  "error": "401 Client Error: Unauthorized for url: https://api.openai.com/v1/chat/completions",
+  "validation": {}
+}

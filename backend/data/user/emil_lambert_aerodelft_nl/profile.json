@@ -2,178 +2,316 @@
   "main_profile": {
     "formality": "informal",
     "formality_distribution": {
-      "formal": 43.0,
-      "informal": 57.0
+      "informal": 71.0,
+      "formal": 29.0
     },
     "politeness": "blunt",
     "politeness_distribution": {
-      "blunt": 92.0,
-      "polite": 8.0
+      "polite": 23.0,
+      "blunt": 77.0
     },
     "certainty": "hedged",
     "certainty_distribution": {
-      "hedged": 100.0
+      "hedged": 97.0,
+      "certain": 3.0
     },
     "greeting": "present",
     "greeting_distribution": {
-      "present": 59.0,
-      "absent": 41.0
+      "present": 70.0,
+      "absent": 30.0
     },
     "closing": "absent",
     "closing_distribution": {
-      "absent": 100.0
+      "absent": 91.0,
+      "present": 9.0
     },
-    "readability": 25.56,
-    "readability_min": -3.5,
-    "readability_max": 415.9,
+    "readability": 8.41,
+    "readability_min": -15.7,
+    "readability_max": 29.9,
     "emoji_usage": "none",
     "emoji_usage_distribution": {
-      "none": 85.0,
-      "some": 15.0
+      "some": 22.0,
+      "none": 78.0
     },
     "passive_voice": "absent",
     "passive_voice_distribution": {
-      "present": 28.0,
-      "absent": 72.0
+      "absent": 66.0,
+      "present": 34.0
     },
     "emotion": "neutral",
     "emotion_distribution": {
-      "neutral": 85.0,
-      "positive": 15.0
+      "neutral": 70.0,
+      "positive": 27.0,
+      "negative": 3.0
     },
     "directness": "indirect",
     "directness_distribution": {
-      "indirect": 98.0,
-      "direct": 2.0
+      "indirect": 94.0,
+      "direct": 6.0
     },
     "subjectivity_level": "objective",
     "subjectivity_level_distribution": {
-      "objective": 73.0,
-      "personal": 27.0
+      "objective": 79.0,
+      "personal": 21.0
     }
   },
   "style_clusters": [
     {
-      "id": 0,
-      "size": 48,
-      "percentage": 48.0,
+      "id": 2,
+      "size": 59,
+      "percentage": 59.0,
       "profile": {
         "formality": "informal",
         "formality_distribution": {
-          "informal": 91.7,
-          "formal": 8.3
+          "informal": 100.0
         },
         "politeness": "blunt",
         "politeness_distribution": {
-          "blunt": 95.8,
-          "polite": 4.2
+          "polite": 25.4,
+          "blunt": 74.6
         },
         "certainty": "hedged",
         "certainty_distribution": {
           "hedged": 100.0
         },
-        "greeting": "absent",
+        "greeting": "present",
         "greeting_distribution": {
-          "absent": 58.3,
-          "present": 41.7
+          "present": 74.6,
+          "absent": 25.4
         },
         "closing": "absent",
         "closing_distribution": {
-          "absent": 100.0
+          "absent": 93.2,
+          "present": 6.8
         },
-        "readability": 5.68,
-        "readability_min": -3.5,
-        "readability_max": 11.1,
+        "readability": 6.85,
+        "readability_min": -15.7,
+        "readability_max": 10.6,
         "emoji_usage": "none",
         "emoji_usage_distribution": {
-          "none": 95.8,
-          "some": 4.2
+          "some": 13.6,
+          "none": 86.4
         },
         "passive_voice": "absent",
         "passive_voice_distribution": {
-          "absent": 100.0
+          "absent": 94.9,
+          "present": 5.1
         },
         "emotion": "neutral",
         "emotion_distribution": {
-          "neutral": 93.8,
-          "positive": 6.2
+          "neutral": 66.1,
+          "positive": 30.5,
+          "negative": 3.4
         },
         "directness": "indirect",
         "directness_distribution": {
-          "indirect": 95.8,
-          "direct": 4.2
+          "indirect": 93.2,
+          "direct": 6.8
         },
         "subjectivity_level": "objective",
         "subjectivity_level_distribution": {
-          "objective": 79.2,
-          "personal": 20.8
+          "objective": 81.4,
+          "personal": 18.6
         }
       },
       "name": "Informal Direct Style",
       "description": "Casual, conversational tone without formalities. Typically doesn't use passive voice and may skip greetings. Prefers direct communication with normal readability.",
       "features": {
         "readability_stats": {
-          "mean": 5.679166666666667,
-          "median": 6.3,
-          "std_dev": 4.271078309874219,
-          "variance": 18.242109929078012,
-          "range": 14.6,
+          "mean": 6.8474576271186445,
+          "median": 7.2,
+          "std_dev": 3.4305099616983354,
+          "variance": 11.768398597311513,
+          "range": 26.299999999999997,
           "quartiles": [
-            4.2,
-            6.3,
-            8.7
+            6.0,
+            7.2,
+            8.55
           ]
         },
         "formality_pattern": {
           "most_common": "informal",
-          "frequency": 0.9166666666666666,
+          "frequency": 1.0,
           "distribution": {
-            "informal": 0.9166666666666666,
-            "formal": 0.08333333333333333
+            "informal": 1.0
           }
         },
         "politeness_pattern": {
           "most_common": "blunt",
-          "frequency": 0.9583333333333334,
+          "frequency": 0.7457627118644068,
           "distribution": {
-            "blunt": 0.9583333333333334,
-            "polite": 0.041666666666666664
+            "blunt": 0.7457627118644068,
+            "polite": 0.2542372881355932
           }
         },
         "greeting_pattern": {
-          "most_common": "absent",
-          "frequency": 0.5833333333333334,
+          "most_common": "present",
+          "frequency": 0.7457627118644068,
           "distribution": {
-            "absent": 0.5833333333333334,
-            "present": 0.4166666666666667
+            "present": 0.7457627118644068,
+            "absent": 0.2542372881355932
           }
         },
         "closing_pattern": {
           "most_common": "absent",
-          "frequency": 1.0,
+          "frequency": 0.9322033898305084,
           "distribution": {
-            "absent": 1.0
+            "absent": 0.9322033898305084,
+            "present": 0.06779661016949153
           }
         },
         "emoji_usage_pattern": {
           "most_common": "none",
-          "frequency": 0.9583333333333334,
+          "frequency": 0.864406779661017,
           "distribution": {
-            "none": 0.9583333333333334,
-            "some": 0.041666666666666664
+            "none": 0.864406779661017,
+            "some": 0.13559322033898305
           }
         },
         "passive_voice_pattern": {
           "most_common": "absent",
+          "frequency": 0.9491525423728814,
+          "distribution": {
+            "absent": 0.9491525423728814,
+            "present": 0.05084745762711865
+          }
+        },
+        "emotion_directness_correlation": {
+          "negative": {
+            "direct": 0.0,
+            "indirect": 1.0
+          },
+          "neutral": {
+            "direct": 0.07692307692307693,
+            "indirect": 0.9230769230769231
+          },
+          "positive": {
+            "direct": 0.05555555555555555,
+            "indirect": 0.9444444444444444
+          }
+        }
+      }
+    },
+    {
+      "id": 1,
+      "size": 26,
+      "percentage": 26.0,
+      "profile": {
+        "formality": "formal",
+        "formality_distribution": {
+          "formal": 100.0
+        },
+        "politeness": "blunt",
+        "politeness_distribution": {
+          "blunt": 69.2,
+          "polite": 30.8
+        },
+        "certainty": "hedged",
+        "certainty_distribution": {
+          "certain": 11.5,
+          "hedged": 88.5
+        },
+        "greeting": "present",
+        "greeting_distribution": {
+          "present": 100.0
+        },
+        "closing": "absent",
+        "closing_distribution": {
+          "absent": 80.8,
+          "present": 19.2
+        },
+        "readability": 9.48,
+        "readability_min": 6.3,
+        "readability_max": 12.2,
+        "emoji_usage": "none",
+        "emoji_usage_distribution": {
+          "none": 100.0
+        },
+        "passive_voice": "present",
+        "passive_voice_distribution": {
+          "present": 65.4,
+          "absent": 34.6
+        },
+        "emotion": "neutral",
+        "emotion_distribution": {
+          "neutral": 65.4,
+          "positive": 34.6
+        },
+        "directness": "indirect",
+        "directness_distribution": {
+          "indirect": 92.3,
+          "direct": 7.7
+        },
+        "subjectivity_level": "objective",
+        "subjectivity_level_distribution": {
+          "objective": 65.4,
+          "personal": 34.6
+        }
+      },
+      "name": "Formal Business Style",
+      "description": "Professional, structured writing with formal tone. Almost always includes greetings, often uses passive voice, and avoids emoji use. Suitable for business and official communications.",
+      "features": {
+        "readability_stats": {
+          "mean": 9.476923076923077,
+          "median": 9.55,
+          "std_dev": 2.015997557996079,
+          "variance": 4.064246153846154,
+          "range": 5.8999999999999995,
+          "quartiles": [
+            8.2,
+            9.55,
+            11.8
+          ]
+        },
+        "formality_pattern": {
+          "most_common": "formal",
           "frequency": 1.0,
           "distribution": {
-            "absent": 1.0
+            "formal": 1.0
+          }
+        },
+        "politeness_pattern": {
+          "most_common": "blunt",
+          "frequency": 0.6923076923076923,
+          "distribution": {
+            "blunt": 0.6923076923076923,
+            "polite": 0.3076923076923077
+          }
+        },
+        "greeting_pattern": {
+          "most_common": "present",
+          "frequency": 1.0,
+          "distribution": {
+            "present": 1.0
+          }
+        },
+        "closing_pattern": {
+          "most_common": "absent",
+          "frequency": 0.8076923076923077,
+          "distribution": {
+            "absent": 0.8076923076923077,
+            "present": 0.19230769230769232
+          }
+        },
+        "emoji_usage_pattern": {
+          "most_common": "none",
+          "frequency": 1.0,
+          "distribution": {
+            "none": 1.0
+          }
+        },
+        "passive_voice_pattern": {
+          "most_common": "present",
+          "frequency": 0.6538461538461539,
+          "distribution": {
+            "present": 0.6538461538461539,
+            "absent": 0.34615384615384615
           }
         },
         "emotion_directness_correlation": {
           "neutral": {
-            "direct": 0.044444444444444446,
-            "indirect": 0.9555555555555556
+            "direct": 0.11764705882352941,
+            "indirect": 0.8823529411764706
           },
           "positive": {
             "direct": 0.0,
@@ -183,141 +321,14 @@
       }
     },
     {
-      "id": 2,
-      "size": 41,
-      "percentage": 41.0,
-      "profile": {
-        "formality": "formal",
-        "formality_distribution": {
-          "formal": 95.1,
-          "informal": 4.9
-        },
-        "politeness": "blunt",
-        "politeness_distribution": {
-          "blunt": 85.4,
-          "polite": 14.6
-        },
-        "certainty": "hedged",
-        "certainty_distribution": {
-          "hedged": 100.0
-        },
-        "greeting": "present",
-        "greeting_distribution": {
-          "present": 95.1,
-          "absent": 4.9
-        },
-        "closing": "absent",
-        "closing_distribution": {
-          "absent": 100.0
-        },
-        "readability": 9.35,
-        "readability_min": 5.2,
-        "readability_max": 15.7,
-        "emoji_usage": "none",
-        "emoji_usage_distribution": {
-          "none": 95.1,
-          "some": 4.9
-        },
-        "passive_voice": "present",
-        "passive_voice_distribution": {
-          "present": 68.3,
-          "absent": 31.7
-        },
-        "emotion": "neutral",
-        "emotion_distribution": {
-          "neutral": 70.7,
-          "positive": 29.3
-        },
-        "directness": "indirect",
-        "directness_distribution": {
-          "indirect": 100.0
-        },
-        "subjectivity_level": "objective",
-        "subjectivity_level_distribution": {
-          "objective": 58.5,
-          "personal": 41.5
-        }
-      },
-      "name": "Formal Business Style",
-      "description": "Professional, structured writing with formal tone. Almost always includes greetings, often uses passive voice, and avoids emoji use. Suitable for business and official communications.",
-      "features": {
-        "readability_stats": {
-          "mean": 9.346341463414634,
-          "median": 7.8,
-          "std_dev": 3.618155438961655,
-          "variance": 13.091048780487805,
-          "range": 10.5,
-          "quartiles": [
-            6.2,
-            7.8,
-            11.5
-          ]
-        },
-        "formality_pattern": {
-          "most_common": "formal",
-          "frequency": 0.9512195121951219,
-          "distribution": {
-            "formal": 0.9512195121951219,
-            "informal": 0.04878048780487805
-          }
-        },
-        "politeness_pattern": {
-          "most_common": "blunt",
-          "frequency": 0.8536585365853658,
-          "distribution": {
-            "blunt": 0.8536585365853658,
-            "polite": 0.14634146341463414
-          }
-        },
-        "greeting_pattern": {
-          "most_common": "present",
-          "frequency": 0.9512195121951219,
-          "distribution": {
-            "present": 0.9512195121951219,
-            "absent": 0.04878048780487805
-          }
-        },
-        "closing_pattern": {
-          "most_common": "absent",
-          "frequency": 1.0,
-          "distribution": {
-            "absent": 1.0
-          }
-        },
-        "emoji_usage_pattern": {
-          "most_common": "none",
-          "frequency": 0.9512195121951219,
-          "distribution": {
-            "none": 0.9512195121951219,
-            "some": 0.04878048780487805
-          }
-        },
-        "passive_voice_pattern": {
-          "most_common": "present",
-          "frequency": 0.6829268292682927,
-          "distribution": {
-            "present": 0.6829268292682927,
-            "absent": 0.3170731707317073
-          }
-        },
-        "emotion_directness_correlation": {
-          "neutral": {
-            "indirect": 1.0
-          },
-          "positive": {
-            "indirect": 1.0
-          }
-        }
-      }
-    },
-    {
-      "id": 1,
-      "size": 11,
-      "percentage": 11.0,
+      "id": 0,
+      "size": 15,
+      "percentage": 15.0,
       "profile": {
         "formality": "informal",
         "formality_distribution": {
-          "informal": 100.0
+          "informal": 80.0,
+          "formal": 20.0
         },
         "politeness": "blunt",
         "politeness_distribution": {
@@ -335,20 +346,23 @@
         "closing_distribution": {
           "absent": 100.0
         },
-        "readability": 172.75,
-        "readability_min": 98.1,
-        "readability_max": 415.9,
+        "readability": 12.68,
+        "readability_min": 9.1,
+        "readability_max": 29.9,
         "emoji_usage": "some",
         "emoji_usage_distribution": {
-          "some": 100.0
+          "some": 93.3,
+          "none": 6.7
         },
-        "passive_voice": "absent",
+        "passive_voice": "present",
         "passive_voice_distribution": {
-          "absent": 100.0
+          "present": 93.3,
+          "absent": 6.7
         },
         "emotion": "neutral",
         "emotion_distribution": {
-          "neutral": 100.0
+          "neutral": 93.3,
+          "negative": 6.7
         },
         "directness": "indirect",
         "directness_distribution": {
@@ -356,29 +370,31 @@
         },
         "subjectivity_level": "objective",
         "subjectivity_level_distribution": {
-          "objective": 100.0
+          "objective": 93.3,
+          "personal": 6.7
         }
       },
-      "name": "High Readability Informal",
-      "description": "Highly readable informal style with emoji usage. No greetings, avoids passive voice, and maintains an objective, neutral tone. Features higher than average readability.",
+      "name": "Formal Business Style",
+      "description": "Professional, structured writing with formal tone. Almost always includes greetings, often uses passive voice, and avoids emoji use. Suitable for business and official communications.",
       "features": {
         "readability_stats": {
-          "mean": 172.74545454545455,
-          "median": 114.6,
-          "std_dev": 122.34026617296827,
-          "variance": 14967.140727272723,
-          "range": 317.79999999999995,
+          "mean": 12.680000000000001,
+          "median": 11.5,
+          "std_dev": 4.872547001898934,
+          "variance": 23.741714285714295,
+          "range": 20.799999999999997,
           "quartiles": [
-            102.4,
-            114.6,
-            161.8
+            11.0,
+            11.5,
+            12.3
           ]
         },
         "formality_pattern": {
           "most_common": "informal",
-          "frequency": 1.0,
+          "frequency": 0.8,
           "distribution": {
-            "informal": 1.0
+            "informal": 0.8,
+            "formal": 0.2
           }
         },
         "politeness_pattern": {
@@ -404,19 +420,24 @@
         },
         "emoji_usage_pattern": {
           "most_common": "some",
-          "frequency": 1.0,
+          "frequency": 0.9333333333333333,
           "distribution": {
-            "some": 1.0
+            "some": 0.9333333333333333,
+            "none": 0.06666666666666667
           }
         },
         "passive_voice_pattern": {
-          "most_common": "absent",
-          "frequency": 1.0,
+          "most_common": "present",
+          "frequency": 0.9333333333333333,
           "distribution": {
-            "absent": 1.0
+            "present": 0.9333333333333333,
+            "absent": 0.06666666666666667
           }
         },
         "emotion_directness_correlation": {
+          "negative": {
+            "indirect": 1.0
+          },
           "neutral": {
             "indirect": 1.0
           }
