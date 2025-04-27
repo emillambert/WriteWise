@@ -3,32 +3,36 @@
 // Handle messages from content scripts and popup
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.type === 'ANALYZE_EMAIL') {
-        // Store the email data for analysis
-        chrome.storage.local.set({ 
-            lastEmailData: message.data,
-            lastAnalysisTime: Date.now()
-        });
-
+        if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
+            chrome.storage.local.set({ 
+                lastEmailData: message.data,
+                lastAnalysisTime: Date.now()
+            });
+        } else {
+            console.error('chrome.storage.local is not available');
+        }
         // For now, just acknowledge receipt
         sendResponse({ success: true });
     } else if (message.type === 'BUTTON_PRESSED') {
-        // Update daily usage count
-        chrome.storage.local.get(['dailyUsage'], function(result) {
-            const today = new Date().toDateString();
-            let dailyUsage = result.dailyUsage || { date: today, count: 0 };
+        if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
+            chrome.storage.local.get(['dailyUsage'], function(result) {
+                const today = new Date().toDateString();
+                let dailyUsage = result.dailyUsage || { date: today, count: 0 };
 
-            // Reset if it's a new day
-            if (dailyUsage.date !== today) {
-                dailyUsage = { date: today, count: 0 };
-            }
+                // Reset if it's a new day
+                if (dailyUsage.date !== today) {
+                    dailyUsage = { date: today, count: 0 };
+                }
 
-            // Increment count if less than 10
-            if (dailyUsage.count < 10) {
-                dailyUsage.count++;
-                chrome.storage.local.set({ dailyUsage });
-            }
-        });
-
+                // Increment count if less than 10
+                if (dailyUsage.count < 10) {
+                    dailyUsage.count++;
+                    chrome.storage.local.set({ dailyUsage });
+                }
+            });
+        } else {
+            console.error('chrome.storage.local is not available');
+        }
         sendResponse({ success: true });
     } else if (message.type === 'GOOGLE_SIGN_IN') {
         handleGoogleSignIn(sendResponse);
@@ -37,6 +41,16 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.type === 'GET_USER_INFO') {
         handleGetUserInfo(sendResponse);
         return true;
+    }
+    if (message.type === 'GET_USER_EMAIL') {
+        if (chrome.identity && chrome.identity.getProfileUserInfo) {
+            chrome.identity.getProfileUserInfo({accountStatus: 'ANY'}, function(userInfo) {
+                sendResponse({ email: userInfo.email || 'anonymous' });
+            });
+            return true; // Keep the message channel open for async response
+        } else {
+            sendResponse({ email: 'anonymous' });
+        }
     }
 });
 
@@ -56,14 +70,18 @@ async function handleGoogleSignIn(sendResponse) {
         const userInfo = await response.json();
         
         // Store user info
-        await chrome.storage.local.set({
-            user: {
-                email: userInfo.email,
-                name: userInfo.name,
-                picture: userInfo.picture,
-                googleId: userInfo.sub
-            }
-        });
+        if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
+            await chrome.storage.local.set({
+                user: {
+                    email: userInfo.email,
+                    name: userInfo.name,
+                    picture: userInfo.picture,
+                    googleId: userInfo.sub
+                }
+            });
+        } else {
+            console.error('chrome.storage.local is not available');
+        }
 
         sendResponse({ success: true, user: userInfo });
     } catch (error) {
@@ -78,8 +96,14 @@ async function handleGoogleSignIn(sendResponse) {
 // Handle getting user info
 async function handleGetUserInfo(sendResponse) {
     try {
-        const { user } = await chrome.storage.local.get('user');
-        
+        let user;
+        if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
+            const result = await chrome.storage.local.get('user');
+            user = result.user;
+        } else {
+            console.error('chrome.storage.local is not available');
+            user = null;
+        }
         if (!user) {
             throw new Error('No user session found');
         }
@@ -103,7 +127,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                 fetch(`https://accounts.google.com/o/oauth2/revoke?token=${token}`)
                     .then(() => {
                         chrome.identity.removeCachedAuthToken({ token: token });
-                        chrome.storage.local.remove('user');
+                        if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
+                            chrome.storage.local.remove('user');
+                        } else {
+                            console.error('chrome.storage.local is not available');
+                        }
                         sendResponse({ success: true });
                     })
                     .catch(error => {
@@ -111,7 +139,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                         sendResponse({ success: false, error: error.message });
                     });
             } else {
-                chrome.storage.local.remove('user');
+                if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
+                    chrome.storage.local.remove('user');
+                } else {
+                    console.error('chrome.storage.local is not available');
+                }
                 sendResponse({ success: true });
             }
         });

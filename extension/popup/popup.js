@@ -76,18 +76,23 @@ document.getElementById('signOutBtn')?.addEventListener('click', async function(
 // Progress bar functionality
 function initializeProgressBar() {
     // Get or initialize daily usage data
-    chrome.storage.local.get(['dailyUsage'], function(result) {
-        const today = new Date().toDateString();
-        let dailyUsage = result.dailyUsage || { date: today, count: 0 };
+    if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
+        chrome.storage.local.get(['dailyUsage'], function(result) {
+            const today = new Date().toDateString();
+            let dailyUsage = result.dailyUsage || { date: today, count: 0 };
 
-        // Reset if it's a new day
-        if (dailyUsage.date !== today) {
-            dailyUsage = { date: today, count: 0 };
-            chrome.storage.local.set({ dailyUsage });
-        }
+            // Reset if it's a new day
+            if (dailyUsage.date !== today) {
+                dailyUsage = { date: today, count: 0 };
+                chrome.storage.local.set({ dailyUsage });
+            }
 
-        updateProgressBar(dailyUsage.count);
-    });
+            updateProgressBar(dailyUsage.count);
+        });
+    } else {
+        console.error('chrome.storage.local is not available');
+        updateProgressBar(0);
+    }
 
     // Listen for button press events from content script
     chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
@@ -98,22 +103,27 @@ function initializeProgressBar() {
 }
 
 function updateButtonPressCount() {
-    chrome.storage.local.get(['dailyUsage'], function(result) {
-        const today = new Date().toDateString();
-        let dailyUsage = result.dailyUsage || { date: today, count: 0 };
+    if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
+        chrome.storage.local.get(['dailyUsage'], function(result) {
+            const today = new Date().toDateString();
+            let dailyUsage = result.dailyUsage || { date: today, count: 0 };
 
-        // Reset if it's a new day
-        if (dailyUsage.date !== today) {
-            dailyUsage = { date: today, count: 0 };
-        }
+            // Reset if it's a new day
+            if (dailyUsage.date !== today) {
+                dailyUsage = { date: today, count: 0 };
+            }
 
-        // Increment count if less than 10
-        if (dailyUsage.count < 10) {
-            dailyUsage.count++;
-            chrome.storage.local.set({ dailyUsage });
-            updateProgressBar(dailyUsage.count);
-        }
-    });
+            // Increment count if less than 10
+            if (dailyUsage.count < 10) {
+                dailyUsage.count++;
+                chrome.storage.local.set({ dailyUsage });
+                updateProgressBar(dailyUsage.count);
+            }
+        });
+    } else {
+        console.error('chrome.storage.local is not available');
+        updateProgressBar(0);
+    }
 }
 
 function updateProgressBar(count) {
@@ -129,13 +139,29 @@ function updateProgressBar(count) {
     }
 }
 
+// Helper function to deduplicate emails by ID
+function deduplicateEmails(emails) {
+    const uniqueEmails = {};
+    for (const email of emails) {
+        if (email.id && !uniqueEmails[email.id]) {
+            uniqueEmails[email.id] = email;
+        }
+    }
+    return Object.values(uniqueEmails);
+}
+
 async function sendEmailsToServer(emails, userId) {
+    // Deduplicate emails before sending
+    const uniqueEmails = deduplicateEmails(emails);
+    console.log(`Deduplicated ${emails.length} emails to ${uniqueEmails.length} unique emails`);
+    
     const timestamp = new Date().toISOString().replace(/[-:.TZ]/g, '').slice(0, 15);
     const safeUserId = typeof userId === 'string' ? userId.replace(/[@.]/g, '_') : 'anonymous';
     const data = {
         user_id: userId,
-        emails: emails
+        emails: uniqueEmails
     };
+    
     const response = await fetch('http://localhost:8000/analyze', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -158,7 +184,7 @@ async function getUserEmailFallback() {
 
 document.getElementById('analyzeBtn')?.addEventListener('click', async function() {
     try {
-        const emails = await gmailService.getLastSentEmails(100);
+        const emails = await gmailService.getLastSentEmails(500); // Increased to 500 to ensure we have enough after filtering
         const token = await gmailService.getAccessToken();
         const userProfile = await fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
             headers: { 'Authorization': `Bearer ${token}` }
@@ -169,7 +195,22 @@ document.getElementById('analyzeBtn')?.addEventListener('click', async function(
         }
         userId = userId || 'anonymous';
         await sendEmailsToServer(emails, userId);
+        
+        // Show success message
+        const statusElem = document.getElementById('statusMessage');
+        if (statusElem) {
+            statusElem.textContent = 'Analysis complete!';
+            statusElem.style.color = '#4CAF50';
+            setTimeout(() => {
+                statusElem.textContent = '';
+            }, 3000);
+        }
     } catch (error) {
-        alert('Failed to analyze emails: ' + error.message);
+        console.error('Failed to analyze emails:', error);
+        const statusElem = document.getElementById('statusMessage');
+        if (statusElem) {
+            statusElem.textContent = 'Failed to analyze emails: ' + error.message;
+            statusElem.style.color = '#FF0000';
+        }
     }
 }); 

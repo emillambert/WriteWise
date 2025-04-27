@@ -66,13 +66,35 @@ function waitForElement(selector, timeout = 5000) {
 // Function to get user email from storage
 function getUserEmailFromStorage() {
     return new Promise((resolve) => {
-        chrome.storage.local.get(['user'], function(result) {
-            if (result.user && result.user.email) {
-                resolve(result.user.email);
-            } else {
-                resolve('anonymous');
-            }
-        });
+        if (typeof chrome !== 'undefined' && chrome.storage && chrome.storage.local) {
+            chrome.storage.local.get(['user'], function(result) {
+                if (result.user && result.user.email) {
+                    resolve(result.user.email);
+                } else {
+                    resolve('anonymous');
+                }
+            });
+        } else {
+            console.error('chrome.storage.local is not available');
+            resolve('anonymous');
+        }
+    });
+}
+
+// Helper to get user email using the best-practice approach
+async function getUserIdUnified() {
+    return new Promise((resolve) => {
+        if (typeof chrome !== 'undefined' && chrome.runtime && chrome.runtime.sendMessage) {
+            chrome.runtime.sendMessage({ type: 'GET_USER_EMAIL' }, function(response) {
+                if (response && response.email) {
+                    resolve(response.email);
+                } else {
+                    resolve('anonymous');
+                }
+            });
+        } else {
+            resolve('anonymous');
+        }
     });
 }
 
@@ -115,9 +137,9 @@ async function getComposeData() {
         }
     }
 
-    // Get user email from storage
-    const userEmail = await getUserEmailFromStorage();
-    console.log('Got user email from storage:', userEmail);
+    // Get user email using unified logic
+    const userEmail = await getUserIdUnified();
+    console.log('Got user email for compose:', userEmail);
 
     const data = {
         user_id: userEmail,
@@ -175,95 +197,91 @@ function getUserEmail() {
     return 'anonymous';
 }
 
+// Debounce utility to prevent infinite loops and performance issues
+function debounce(func, wait) {
+    let timeout;
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+}
+
 // Function to create and inject the WriteWise button
 function injectWriteWiseButton() {
     console.log('Attempting to inject WriteWise button');
-    
-    // Create the button element
-    const button = document.createElement('button');
-    button.className = 'writewise-button';
-    button.innerHTML = `<img src="${chrome.runtime.getURL('logo/logo-16.png')}" alt="WriteWise" width="16" height="16">`;
-    button.title = 'WriteWise - Enhance your email';
-    
-    // Function to find and insert the button
-    function insertButton() {
-        // Try multiple selectors for the send button
+    const composeWindows = document.querySelectorAll('.M9, .AD, .nH.nn');
+    composeWindows.forEach(composeWindow => {
         const sendButtonSelectors = [
             '[role="button"][data-tooltip*="Send"]',
             '[role="button"][data-tooltip*="⌘Enter"]',
             '[data-tooltip-delay="800"]',
             '.T-I.J-J5-Ji.aoO.v7.T-I-atl.L3'
         ];
-        
-        let sendButton;
+        let sendButton = null;
         for (const selector of sendButtonSelectors) {
-            sendButton = document.querySelector(selector);
+            sendButton = composeWindow.querySelector(selector);
             if (sendButton) {
                 console.log('Found send button with selector:', selector);
                 break;
             }
         }
-
-        if (sendButton && !document.querySelector('.writewise-button')) {
-            console.log('Found send button, injecting WriteWise button');
-            
-            // Find the toolbar
+        if (!sendButton) {
+            for (const selector of sendButtonSelectors) {
+                sendButton = document.querySelector(selector);
+                if (sendButton && composeWindow.contains(sendButton)) {
+                    break;
+                } else {
+                    sendButton = null;
+                }
+            }
+        }
+        if (sendButton) {
             const toolbar = sendButton.closest('[role="toolbar"]') || sendButton.parentElement;
-            if (toolbar) {
-                // Insert before the send button's container
+            if (toolbar && !toolbar.querySelector('.writewise-button')) {
+                const button = document.createElement('button');
+                button.className = 'writewise-button';
+                button.innerHTML = `<img src="${chrome.runtime.getURL('logo/logo-16.png')}" alt="WriteWise" width="16" height="16">`;
+                button.title = 'WriteWise - Enhance your email';
                 toolbar.insertBefore(button, sendButton);
-                console.log('Successfully injected button into toolbar');
-            } else {
-                // Fallback: insert directly before send button
-                sendButton.parentNode.insertBefore(button, sendButton);
-                console.log('Injected button using fallback method');
+                console.log('Successfully injected WriteWise button into toolbar');
             }
         } else {
-            console.log('Send button not found or WriteWise button already exists');
+            console.log('Send button not found in compose window');
         }
+    });
+    // Debounced version for observers
+    if (!window._debouncedInjectWriteWiseButton) {
+        window._debouncedInjectWriteWiseButton = debounce(injectWriteWiseButton, 200);
     }
-
-    // Initial insertion attempt
-    insertButton();
-
+    const debouncedInject = window._debouncedInjectWriteWiseButton;
     // Watch for compose window changes
     const composeObserver = new MutationObserver((mutations) => {
         for (const mutation of mutations) {
             if (mutation.addedNodes.length || 
                 (mutation.type === 'attributes' && 
                  (mutation.attributeName === 'class' || mutation.attributeName === 'style'))) {
-                insertButton();
+                debouncedInject();
             }
         }
     });
-
-    // Observe both compose window and its parent
-    function observeComposeWindows() {
-        const composeWindows = document.querySelectorAll('.M9, .AD, .nH.nn');
-        composeWindows.forEach(window => {
-            composeObserver.observe(window, {
-                childList: true,
-                subtree: true,
-                attributes: true,
-                attributeFilter: ['class', 'style']
-            });
-            console.log('Observing compose window:', window);
+    const allComposeWindows = document.querySelectorAll('.M9, .AD, .nH.nn');
+    allComposeWindows.forEach(window => {
+        composeObserver.observe(window, {
+            childList: true,
+            subtree: true,
+            attributes: true,
+            attributeFilter: ['class', 'style']
         });
-    }
-
-    // Initial observation
-    observeComposeWindows();
-
+        console.log('Observing compose window:', window);
+    });
     // Also observe the body for new compose windows
     const bodyObserver = new MutationObserver((mutations) => {
         for (const mutation of mutations) {
             if (mutation.addedNodes.length) {
-                observeComposeWindows();
-                insertButton();
+                debouncedInject();
             }
         }
     });
-
     bodyObserver.observe(document.body, {
         childList: true,
         subtree: true
@@ -299,14 +317,35 @@ document.addEventListener('click', async (event) => {
     if (event.target.closest('.writewise-button')) {
         const button = event.target.closest('.writewise-button');
         button.style.background = '#666666';
-        
         try {
             const data = await getComposeData();
             console.log('Extracted data:', data);
-            
             if (data) {
-                await sendToServer(data);
-                button.style.background = '#4CAF50';
+                const response = await fetch('http://localhost:8000/context', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                if (!response.ok) throw new Error('Server error');
+                const result = await response.json();
+                if (result.status === 'success' && result.improved) {
+                    // Insert improved content
+                    const composeElem = document.querySelector('.Am.Al.editable[role="textbox"]');
+                    if (composeElem) {
+                        composeElem.innerText = result.improved.email;
+                    }
+                    if (!data.is_reply) {
+                        // Only set subject for new emails
+                        const subjectElem = document.querySelector('input[name="subjectbox"]');
+                        if (subjectElem) {
+                            subjectElem.value = result.improved.subject;
+                        }
+                    }
+                    button.style.background = '#4CAF50';
+                } else {
+                    console.error('No improved result in response:', result);
+                    button.style.background = '#FF0000';
+                }
             } else {
                 console.error('Failed to extract email data');
                 button.style.background = '#FF0000';
@@ -315,7 +354,6 @@ document.addEventListener('click', async (event) => {
             console.error('Error:', error);
             button.style.background = '#FF0000';
         }
-        
         setTimeout(() => {
             button.style.background = '#228B22';
         }, 2000);

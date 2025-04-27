@@ -113,22 +113,44 @@ class GmailService {
         });
         const listData = await listRes.json();
         if (!listData.messages) return [];
+        
+        // Track processed email IDs to prevent duplicates
+        const processedIds = new Set();
+        const uniqueMessages = [];
+        
+        // Only keep messages with unique IDs
+        for (const msg of listData.messages) {
+            if (!processedIds.has(msg.id)) {
+                processedIds.add(msg.id);
+                uniqueMessages.push(msg);
+            }
+        }
+        
+        console.log(`Found ${listData.messages.length} messages, ${uniqueMessages.length} are unique`);
+        
         // Fetch each message's details
-        const emails = await Promise.all(listData.messages.map(async (msg) => {
-            const msgRes = await fetch(`${this.API_URL}/users/me/messages/${msg.id}?format=full`, {
-                headers: { 'Authorization': `Bearer ${token}` }
-            });
-            const msgData = await msgRes.json();
-            // Check for payload and headers existence
-            const headers = msgData.payload && msgData.payload.headers ? msgData.payload.headers : [];
-            const subject = this.getHeader(headers, 'Subject');
-            const to = this.getHeader(headers, 'To');
-            const from = this.getHeader(headers, 'From');
-            const date = this.getHeader(headers, 'Date');
-            const body = this.decodeMessageBody(msgData.payload || {});
-            return { subject, to, from, date, body, id: msg.id };
+        const emails = await Promise.all(uniqueMessages.map(async (msg) => {
+            try {
+                const msgRes = await fetch(`${this.API_URL}/users/me/messages/${msg.id}?format=full`, {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                const msgData = await msgRes.json();
+                // Check for payload and headers existence
+                const headers = msgData.payload && msgData.payload.headers ? msgData.payload.headers : [];
+                const subject = this.getHeader(headers, 'Subject');
+                const to = this.getHeader(headers, 'To');
+                const from = this.getHeader(headers, 'From');
+                const date = this.getHeader(headers, 'Date');
+                const body = this.decodeMessageBody(msgData.payload || {});
+                return { subject, to, from, date, body, id: msg.id };
+            } catch (error) {
+                console.error(`Error fetching message ${msg.id}:`, error);
+                return null;
+            }
         }));
-        return emails;
+        
+        // Filter out any null results from failed fetches
+        return emails.filter(email => email !== null);
     }
 }
 

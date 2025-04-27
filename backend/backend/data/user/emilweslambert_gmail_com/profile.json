@@ -1,0 +1,160 @@
+{
+  "main_profile": {
+    "formality": "informal",
+    "formality_distribution": {
+      "informal": 100.0
+    },
+    "politeness": "blunt",
+    "politeness_distribution": {
+      "blunt": 97.0,
+      "polite": 3.0
+    },
+    "certainty": "hedged",
+    "certainty_distribution": {
+      "hedged": 100.0
+    },
+    "greeting": "present",
+    "greeting_distribution": {
+      "present": 58.0,
+      "absent": 42.0
+    },
+    "closing": "absent",
+    "closing_distribution": {
+      "absent": 100.0
+    },
+    "readability": 23.07,
+    "readability_min": -3.5,
+    "readability_max": 415.9,
+    "emoji_usage": "none",
+    "emoji_usage_distribution": {
+      "none": 88.0,
+      "high": 12.0
+    },
+    "passive_voice": "absent",
+    "passive_voice_distribution": {
+      "present": 26.0,
+      "absent": 74.0
+    }
+  },
+  "style_clusters": [
+    {
+      "id": 0,
+      "size": 91,
+      "percentage": 91.0,
+      "profile": {
+        "formality": "informal",
+        "formality_distribution": {
+          "informal": 100.0
+        },
+        "politeness": "blunt",
+        "politeness_distribution": {
+          "blunt": 96.7,
+          "polite": 3.3
+        },
+        "certainty": "hedged",
+        "certainty_distribution": {
+          "hedged": 100.0
+        },
+        "greeting": "present",
+        "greeting_distribution": {
+          "present": 63.7,
+          "absent": 36.3
+        },
+        "closing": "absent",
+        "closing_distribution": {
+          "absent": 100.0
+        },
+        "readability": 6.62,
+        "readability_min": -3.5,
+        "readability_max": 15.7,
+        "emoji_usage": "none",
+        "emoji_usage_distribution": {
+          "none": 96.7,
+          "high": 3.3
+        },
+        "passive_voice": "absent",
+        "passive_voice_distribution": {
+          "present": 28.6,
+          "absent": 71.4
+        }
+      }
+    },
+    {
+      "id": 2,
+      "size": 7,
+      "percentage": 7.0,
+      "profile": {
+        "formality": "informal",
+        "formality_distribution": {
+          "informal": 100.0
+        },
+        "politeness": "blunt",
+        "politeness_distribution": {
+          "blunt": 100.0
+        },
+        "certainty": "hedged",
+        "certainty_distribution": {
+          "hedged": 100.0
+        },
+        "greeting": "absent",
+        "greeting_distribution": {
+          "absent": 100.0
+        },
+        "closing": "absent",
+        "closing_distribution": {
+          "absent": 100.0
+        },
+        "readability": 124.6,
+        "readability_min": 102.4,
+        "readability_max": 161.8,
+        "emoji_usage": "high",
+        "emoji_usage_distribution": {
+          "high": 100.0
+        },
+        "passive_voice": "absent",
+        "passive_voice_distribution": {
+          "absent": 100.0
+        }
+      }
+    },
+    {
+      "id": 1,
+      "size": 2,
+      "percentage": 2.0,
+      "profile": {
+        "formality": "informal",
+        "formality_distribution": {
+          "informal": 100.0
+        },
+        "politeness": "blunt",
+        "politeness_distribution": {
+          "blunt": 100.0
+        },
+        "certainty": "hedged",
+        "certainty_distribution": {
+          "hedged": 100.0
+        },
+        "greeting": "absent",
+        "greeting_distribution": {
+          "absent": 100.0
+        },
+        "closing": "absent",
+        "closing_distribution": {
+          "absent": 100.0
+        },
+        "readability": 415.9,
+        "readability_min": 415.9,
+        "readability_max": 415.9,
+        "emoji_usage": "high",
+        "emoji_usage_distribution": {
+          "high": 100.0
+        },
+        "passive_voice": "absent",
+        "passive_voice_distribution": {
+          "absent": 100.0
+        }
+      }
+    }
+  ],
+  "email_count": 100
+}
