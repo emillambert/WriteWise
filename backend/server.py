@@ -9,6 +9,13 @@ from profile_aggregation import aggregate_user_profile
 import subprocess
 import re
 import logging
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import KMeans
+import matplotlib
+matplotlib.use('Agg')  # Use non-interactive backend for server environment
 
 app = Flask(__name__)
 
@@ -25,12 +32,206 @@ CORS(app, resources={r"/*": {
 }})
 
 # Ensure data directory exists
-data_dir = os.path.join('backend', 'data', 'user')
+data_dir = os.path.join('data', 'user')
 if not os.path.exists(data_dir):
     os.makedirs(data_dir)
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s %(message)s')
+
+def generate_cluster_visualization(user_dir, tone_axes_list, user_id, timestamp):
+    """
+    Generates a visualization of tone clusters reduced to 2 principal components.
+    
+    Args:
+        user_dir: Directory to save the visualization
+        tone_axes_list: List of tone classification results
+        user_id: User identifier
+        timestamp: Current timestamp string
+    
+    Returns:
+        str: Path to the generated visualization file
+    """
+    # Skip if we don't have at least 2 data points
+    if not tone_axes_list or len(tone_axes_list) < 2:
+        logging.warning("Not enough data points for clustering visualization")
+        return None
+    
+    try:
+        # Extract features for clustering
+        features = []
+        
+        # Define which tone axes to use for clustering
+        tone_dimensions = [
+            'formality', 'politeness', 'certainty', 'emotion', 
+            'greeting_score', 'closing_score', 'emoji_score', 
+            'directness', 'subjectivity'
+        ]
+        
+        # Collect numeric values
+        for tone in tone_axes_list:
+            if not tone:  # Skip empty entries
+                continue
+                
+            # Extract numeric values for each dimension
+            # Convert categorical dimensions to numeric values
+            tone_features = []
+            
+            # Formality: formal=2, neutral=1, informal=0
+            formality = tone.get('formality', 'neutral')
+            if formality == 'formal':
+                tone_features.append(2)
+            elif formality == 'neutral':
+                tone_features.append(1)
+            else:
+                tone_features.append(0)
+                
+            # Politeness: polite=2, neutral=1, impolite=0
+            politeness = tone.get('politeness', 'neutral')
+            if politeness == 'polite':
+                tone_features.append(2)
+            elif politeness == 'neutral':
+                tone_features.append(1)
+            else:
+                tone_features.append(0)
+                
+            # Certainty: confident=2, balanced=1, hedged=0
+            certainty = tone.get('certainty', 'balanced')
+            if certainty == 'confident':
+                tone_features.append(2)
+            elif certainty == 'balanced':
+                tone_features.append(1)
+            else:
+                tone_features.append(0)
+                
+            # Emotion: positive=2, neutral=1, negative=0
+            emotion = tone.get('emotion', 'neutral')
+            if emotion == 'positive':
+                tone_features.append(2)
+            elif emotion == 'neutral':
+                tone_features.append(1)
+            else:
+                tone_features.append(0)
+                
+            # Presence dimensions: map present=1, absent=0
+            greeting = tone.get('greeting', 'absent')
+            tone_features.append(1 if greeting == 'present' else 0)
+            
+            closing = tone.get('closing', 'absent')
+            tone_features.append(1 if closing == 'present' else 0)
+            
+            # Emoji usage: high=2, some=1, none=0
+            emoji_usage = tone.get('emoji_usage', 'none')
+            if emoji_usage == 'high':
+                tone_features.append(2)
+            elif emoji_usage == 'some':
+                tone_features.append(1)
+            else:
+                tone_features.append(0)
+                
+            # Directness: direct=1, indirect=0
+            directness = tone.get('directness', 'direct')
+            tone_features.append(1 if directness == 'direct' else 0)
+            
+            # Subjectivity: personal=1, objective=0
+            subjectivity = tone.get('subjectivity_level', 'objective')
+            tone_features.append(1 if subjectivity == 'personal' else 0)
+            
+            features.append(tone_features)
+        
+        # Skip if not enough valid entries
+        if len(features) < 2:
+            logging.warning("Not enough valid entries for clustering visualization")
+            return None
+            
+        # Convert to numpy array
+        X = np.array(features)
+        
+        # Standardize features
+        X_scaled = StandardScaler().fit_transform(X)
+        
+        # Apply PCA to reduce to 2 dimensions
+        pca = PCA(n_components=2)
+        principal_components = pca.fit_transform(X_scaled)
+        
+        # Determine number of clusters (between 2 and 5)
+        max_clusters = min(5, len(X))
+        min_clusters = 2
+        
+        # Use KMeans to identify clusters
+        optimal_k = 3  # Default to 3 clusters
+        
+        # Try to find optimal number of clusters using elbow method
+        try:
+            distortions = []
+            K_range = range(min_clusters, max_clusters + 1)
+            for k in K_range:
+                kmeans = KMeans(n_clusters=k, random_state=42, n_init=10)
+                kmeans.fit(X_scaled)
+                distortions.append(kmeans.inertia_)
+                
+            # Simple elbow method: look for the "elbow" in the curve
+            deltas = np.diff(distortions)
+            # If the second derivative is at maximum, it's likely the elbow point
+            if len(deltas) > 1:
+                acceleration = np.diff(deltas)
+                optimal_idx = np.argmax(acceleration) + 1
+                optimal_k = K_range[optimal_idx]
+        except Exception as e:
+            logging.error(f"Error determining optimal clusters: {e}")
+        
+        # Apply KMeans with the determined number of clusters
+        kmeans = KMeans(n_clusters=optimal_k, random_state=42, n_init=10)
+        clusters = kmeans.fit_predict(X_scaled)
+        
+        # Create the visualization
+        plt.figure(figsize=(10, 8))
+        scatter = plt.scatter(principal_components[:, 0], principal_components[:, 1], 
+                   c=clusters, cmap='viridis', s=100, alpha=0.8)
+        
+        # Add centroids
+        centroids_pca = pca.transform(kmeans.cluster_centers_)
+        plt.scatter(centroids_pca[:, 0], centroids_pca[:, 1], 
+                   marker='X', s=200, color='red', label='Centroids')
+        
+        # Add styling and information
+        plt.title(f'Email Style Clusters ({optimal_k} Clusters Identified)', fontsize=16)
+        plt.xlabel(f'Principal Component 1 ({pca.explained_variance_ratio_[0]:.2%} variance)', fontsize=14)
+        plt.ylabel(f'Principal Component 2 ({pca.explained_variance_ratio_[1]:.2%} variance)', fontsize=14)
+        plt.colorbar(scatter, label='Cluster')
+        plt.legend()
+        plt.grid(alpha=0.3)
+        
+        # Add feature contribution arrows
+        if pca.components_.shape[1] == len(tone_dimensions):
+            # Scale the feature arrows to fit nicely on the plot
+            scale = 2  
+            for i, feature in enumerate(tone_dimensions):
+                plt.arrow(0, 0, 
+                        pca.components_[0, i] * scale, 
+                        pca.components_[1, i] * scale,
+                        head_width=0.1, head_length=0.1, fc='blue', ec='blue', alpha=0.5)
+                plt.text(pca.components_[0, i] * scale * 1.15, 
+                       pca.components_[1, i] * scale * 1.15,
+                       feature, fontsize=12)
+        
+        # Save the figure
+        viz_dir = os.path.join(user_dir, 'visualizations')
+        os.makedirs(viz_dir, exist_ok=True)
+        viz_file = os.path.join(viz_dir, f'clusters_{timestamp}.png')
+        plt.tight_layout()
+        plt.savefig(viz_file, dpi=300)
+        plt.close()
+        
+        logging.info(f"Generated cluster visualization with {optimal_k} clusters")
+        
+        return viz_file
+        
+    except Exception as e:
+        logging.error(f"Error generating cluster visualization: {e}")
+        import traceback
+        logging.error(traceback.format_exc())
+        return None
 
 @app.route('/analyze', methods=['POST', 'OPTIONS'])
 def analyze():
@@ -196,11 +397,34 @@ def analyze():
             except Exception as file_err:
                 logging.error(f"Failed to save tone file: {file_err}")
         logging.info(f"Analysis complete for user_id={user_id}, timestamp={timestamp}")
-        return jsonify({
-            'status': 'success',
-            'message': 'Analysis complete and data saved.',
-            'profile': user_profile
-        })
+        
+        # Generate and save cluster visualization
+        try:
+            viz_file = generate_cluster_visualization(user_dir, tone_axes_list, safe_user_id, timestamp)
+            if viz_file:
+                logging.info(f"Saved cluster visualization to {os.path.basename(viz_file)}")
+                # Add visualization path to response
+                response_data = {
+                    'status': 'success',
+                    'message': 'Analysis complete and data saved.',
+                    'profile': user_profile,
+                    'visualization': os.path.basename(viz_file)
+                }
+            else:
+                response_data = {
+                    'status': 'success',
+                    'message': 'Analysis complete and data saved.',
+                    'profile': user_profile
+                }
+        except Exception as viz_err:
+            logging.error(f"Error with visualization: {viz_err}")
+            response_data = {
+                'status': 'success',
+                'message': 'Analysis complete and data saved.',
+                'profile': user_profile
+            }
+        
+        return jsonify(response_data)
     except Exception as e:
         import traceback
         error_trace = traceback.format_exc()
@@ -241,13 +465,20 @@ def context_and_improve():
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
         context_filename = os.path.join(user_dir, f'context_{timestamp}.json')
         
+        # Save current context data
         try:
             with open(context_filename, 'w', encoding='utf-8') as f:
                 json.dump(data, f, indent=2, ensure_ascii=False)
+            logging.info(f"Saved context file: {os.path.basename(context_filename)}")
         except Exception as file_err:
             logging.error(f"Failed to save context file: {file_err}")
             # Continue processing even if file save fails
             
+        # Import improve_email module and its helper functions
+        import sys
+        sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+        from improve_email import build_prompt, query_chatgpt, save_improved_result, get_latest_file
+        
         # Load the user's profile
         profile_filename = os.path.join(user_dir, 'profile.json')
         user_profile = {}
@@ -292,12 +523,8 @@ def context_and_improve():
                 except Exception as file_err:
                     logging.error(f"Failed to read tone file: {file_err}")
                     return jsonify({'status': 'error', 'message': 'Failed to read tone data'}), 500
-                    
-        # Build prompt and get improved email
-        import sys
-        sys.path.append(os.path.dirname(os.path.abspath(__file__)))
-        from improve_email import build_prompt, query_chatgpt, save_improved_result
         
+        # Always use current context data for improvement
         def get_first(val, default=""):
             if isinstance(val, list):
                 return val[0] if val else default
@@ -305,21 +532,27 @@ def context_and_improve():
                 return val
             return default
             
-        recipients = get_first(data.get("recipients", ""))
+        # Extract all necessary data from the context
+        recipients_data = data.get("recipients", {})
         content = data.get("content", "")
+        subject = data.get("subject", "")
         content_length = len(content) if content else 0
         
+        logging.info(f"Processing improvement request - Subject: '{subject}', Content length: {content_length}")
+        
         try:
-            # Use the user's profile instead of tone data
-            prompt = build_prompt(recipients, user_profile, content)
-            logging.info(f"Built prompt for improvement using user profile (length={len(prompt)})")
-            # Don't log the full prompt as it contains the email content
+            # Use the enhanced query_chatgpt function that selects style clusters
+            improved = query_chatgpt("", recipients_data, user_profile, content, subject)
             
-            improved = query_chatgpt(prompt)
-            logging.info(f"Received improved email from OpenAI (length={len(improved)})")
-            # Don't log the entire improved email content
+            # Log the selected cluster for analytics
+            selected_cluster = improved.get("cluster", "Unknown")
+            logging.info(f"Improved email using cluster: {selected_cluster}")
             
-            improved_path = save_improved_result(improved, user_dir, safe_user_id)
+            # Create validation report (not actively used in server mode)
+            validation_report = {}
+            
+            # Save the improved email
+            improved_path = save_improved_result(improved, validation_report, user_dir, safe_user_id)
             logging.info(f"Saved improved email to {os.path.basename(improved_path)}")
             
             return jsonify({'status': 'success', 'improved': improved})

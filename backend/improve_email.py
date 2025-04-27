@@ -121,29 +121,159 @@ def build_prompt(recipients, profile, content, feedback=None):
     )
     return prompt
 
-def query_chatgpt(prompt):
+def query_chatgpt(prompt, recipients, profile, content, subject=""):
+    """
+    Query ChatGPT with the enhanced prompt structure using GPT-4
+    
+    Args:
+        prompt: (Deprecated, kept for backward compatibility)
+        recipients: Email recipients
+        profile: User's writing profile with style clusters
+        content: Draft email content
+        subject: Email subject
+
+    Returns:
+        dict: Improved email with subject line
+    """
     url = "https://api.openai.com/v1/chat/completions"
     headers = {
         "Authorization": f"Bearer {OPENAI_API_KEY}",
         "Content-Type": "application/json"
     }
+    
+    # Extract main profile and style clusters
+    main_profile = profile.get("main_profile", {})
+    style_clusters = profile.get("style_clusters", [])
+    
+    # If no style clusters exist, create a default one based on main profile
+    if not style_clusters:
+        style_clusters = [{
+            "name": "Default Style",
+            "description": "User's default writing style based on analyzed emails",
+            "profile": main_profile
+        }]
+    
+    # Format recipient information
+    if isinstance(recipients, list):
+        to_recipients = ", ".join(recipients)
+        cc_recipients = ""
+    elif isinstance(recipients, str):
+        to_recipients = recipients
+        cc_recipients = ""
+    else:
+        to_recipients = ""
+        cc_recipients = ""
+        
+    # Create the structured messages for the conversation
+    messages = [
+        # System message to set the role
+        {
+            "role": "system",
+            "content": (
+                "You are an expert email assistant. "
+                "Given a user's global style profile plus a set of scenario‐specific style clusters, "
+                "you will: 1) choose the cluster whose profile best matches the current email context "
+                "(based on subject, recipients, and conversation tone), "
+                "2) rewrite the user's draft to match that cluster's register, "
+                "3) preserve the user's intent and key details."
+            )
+        },
+        
+        # Context message with email details
+        {
+            "role": "user",
+            "content": (
+                "**Context** (email to be written):\n"
+                f"Subject: {subject}\n"
+                f"Original draft: {content}\n"
+                f"Recipients: To={to_recipients}, CC={cc_recipients}\n"
+                "————\n"
+                "**User's Global Style Profile:**\n" +
+                json.dumps(main_profile, indent=2)
+            )
+        },
+        
+        # Style clusters message
+        {
+            "role": "user",
+            "content": (
+                "**Available Style Clusters:**\n" +
+                "\n\n".join(
+                    f"- **{c.get('name', f'Cluster {i}')}**: {c.get('description', 'No description')}"
+                    for i, c in enumerate(style_clusters)
+                )
+            )
+        },
+        
+        # Final instruction
+        {
+            "role": "user",
+            "content": (
+                "Step 1: Based on the email context above (subject and recipients), "
+                "pick **one** of the style clusters by name and tell me which you chose and why.\n"
+                "Step 2: Rewrite the draft email to match that cluster's tone, register, "
+                "and stylistic preferences. Preserve all necessary details.\n"
+                "Step 3: Output a JSON object with three keys:\n"
+                '  • "subject": the new subject line (string)\n'
+                '  • "email": the full revised email body (string)\n'
+                '  • "cluster": the name of the cluster you selected (string)\n'
+                "No extra commentary."
+            )
+        }
+    ]
+    
+    # API request data
     data = {
-        "model": "gpt-3.5-turbo",
-        "messages": [
-            {"role": "system", "content": "You are an expert email assistant."},
-            {"role": "user", "content": prompt}
-        ],
-        "max_tokens": 500,
-        "temperature": 0.7
+        "model": "gpt-4",  # Use GPT-4 for better style matching and context understanding
+        "messages": messages,
+        "temperature": 0.7,
+        "max_tokens": 800  # Increased max tokens to accommodate longer emails
     }
-    response = requests.post(url, headers=headers, json=data)
-    response.raise_for_status()
-    reply = response.json()["choices"][0]["message"]["content"]
+    
     try:
-        result = json.loads(reply)
-    except Exception:
-        result = {"subject": "Error: Could not parse response", "email": reply}
-    return result
+        response = requests.post(url, headers=headers, json=data)
+        response.raise_for_status()
+        reply = response.json()["choices"][0]["message"]["content"]
+        
+        # Try to extract the JSON portion if mixed with text
+        json_start = reply.find('{')
+        json_end = reply.rfind('}') + 1
+        
+        if json_start >= 0 and json_end > json_start:
+            json_str = reply[json_start:json_end]
+            try:
+                result = json.loads(json_str)
+                # Ensure the required fields are present
+                if "subject" not in result or "email" not in result:
+                    # Add missing fields with defaults if needed
+                    if "subject" not in result:
+                        result["subject"] = subject or "No Subject"
+                    if "email" not in result:
+                        result["email"] = content
+                return result
+            except json.JSONDecodeError:
+                # If JSON parsing fails, return the full reply 
+                return {
+                    "subject": subject or "No Subject",
+                    "email": reply,
+                    "cluster": "Unknown",
+                    "parsing_error": "Could not parse JSON from response"
+                }
+        else:
+            # No JSON found, use the full reply as the email content
+            return {
+                "subject": subject or "No Subject",
+                "email": reply,
+                "cluster": "Unknown",
+                "parsing_error": "No JSON found in response"
+            }
+    except Exception as e:
+        return {
+            "subject": "Error: API request failed",
+            "email": f"An error occurred: {str(e)}",
+            "cluster": "Error",
+            "error": str(e)
+        }
 
 def save_improved_result(improved, validation_report, user_dir, user_id):
     timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
@@ -159,24 +289,34 @@ def save_improved_result(improved, validation_report, user_dir, user_id):
     return improved_path
 
 def main(user_id, max_attempts=2):
-    user_dir = os.path.join("backend", "data", user_id)
+    # Fix the path to not include redundant 'backend' directory
+    user_dir = os.path.join("data", "user", user_id)
     if not os.path.isdir(user_dir):
         print(f"User directory not found: {user_dir}")
         return
     
-    # Use profile.json instead of tone file
+    # Always use profile.json and the latest context file
     profile_path = os.path.join(user_dir, "profile.json")
     latest_context = get_latest_file(user_dir, "context_")
     
-    if not os.path.exists(profile_path) or not latest_context:
-        print("Could not find both profile and context files.")
+    if not os.path.exists(profile_path):
+        print("Profile file not found.")
+        return
+        
+    if not latest_context:
+        print("No context file found.")
         return
     
-    print(f"Using context: {latest_context}\nUsing profile: {profile_path}")
-    context = load_json(latest_context)
-    profile = load_json(profile_path)
+    print(f"Using latest context: {latest_context}\nUsing profile: {profile_path}")
     
-    # Extract recipients and content robustly
+    try:
+        context = load_json(latest_context)
+        profile = load_json(profile_path)
+    except Exception as e:
+        print(f"Error loading files: {e}")
+        return
+    
+    # Extract recipients, subject, and content from context
     def get_first(val, default=""):
         if isinstance(val, list):
             return val[0] if val else default
@@ -184,40 +324,105 @@ def main(user_id, max_attempts=2):
             return val
         return default
     
-    recipients = get_first(context.get("recipients", ""))
+    # Handle recipients in various formats
+    recipients_data = context.get("recipients", {})
+    
+    if isinstance(recipients_data, dict):
+        # Format with to/cc fields
+        to_recipients = recipients_data.get("to", [])
+        cc_recipients = recipients_data.get("cc", [])
+        
+        # Convert to lists if they're strings
+        if isinstance(to_recipients, str):
+            to_recipients = [to_recipients] if to_recipients else []
+        if isinstance(cc_recipients, str):
+            cc_recipients = [cc_recipients] if cc_recipients else []
+            
+        recipients = to_recipients + cc_recipients
+    elif isinstance(recipients_data, list):
+        # Simple list format
+        recipients = recipients_data
+    else:
+        # String or other format
+        recipients = get_first(recipients_data, "")
+    
     content = context.get("content", "")
+    subject = context.get("subject", "")
+    
+    print(f"Extracted subject: '{subject}'")
+    print(f"Extracted recipients: {recipients}")
+    print(f"Content length: {len(content)} characters")
+    
+    # Add style clusters if they don't exist yet
+    if "style_clusters" not in profile:
+        # Create default style clusters based on the main profile
+        main_profile = profile.get("main_profile", {})
+        
+        # Generate some example clusters based on the main profile
+        formal_cluster = {
+            "name": "Professional/Formal",
+            "description": "Formal tone for professional or official communications",
+            "profile": {k: v for k, v in main_profile.items()}
+        }
+        formal_cluster["profile"].update({
+            "formality": "formal",
+            "politeness": "polite",
+            "greeting": "present",
+            "closing": "present",
+            "emoji_usage": "none"
+        })
+        
+        casual_cluster = {
+            "name": "Casual/Friendly",
+            "description": "Relaxed tone for friends, family and casual acquaintances",
+            "profile": {k: v for k, v in main_profile.items()}
+        }
+        casual_cluster["profile"].update({
+            "formality": "informal",
+            "politeness": "neutral",
+            "emoji_usage": "some"
+        })
+        
+        # Create a cluster using only the main profile as-is
+        default_cluster = {
+            "name": "Default Style",
+            "description": "The user's typical writing style based on analyzed emails",
+            "profile": {k: v for k, v in main_profile.items()} 
+        }
+        
+        # Add the clusters to the profile
+        profile["style_clusters"] = [default_cluster, formal_cluster, casual_cluster]
+        
+        # Save the updated profile with clusters
+        try:
+            with open(profile_path, "w", encoding="utf-8") as f:
+                json.dump(profile, f, indent=2, ensure_ascii=False)
+            print("Added style clusters to profile")
+        except Exception as e:
+            print(f"Warning: Could not save updated profile with clusters: {e}")
     
     # Initial email improvement
-    feedback = None
     improved = None
     
-    for attempt in range(max_attempts):
-        # Build prompt with any feedback from previous attempts
-        prompt = build_prompt(recipients, profile, content, feedback)
-        
-        # Query ChatGPT
-        improved = query_chatgpt(prompt)
+    try:
+        # Use the updated query_chatgpt function with all parameters
+        improved = query_chatgpt("", recipients, profile, content, subject)
         
         # Validate if the style matches the user's profile
         validation_report = validate_style_match(profile, improved["email"])
         match_score = validation_report.get("overall_match", 0)
         
         print(f"Style match score: {match_score:.2f}")
+        print(f"Selected cluster: {improved.get('cluster', 'Unknown')}")
         
-        # If we have a good match or this is our last attempt, save and return
-        if match_score >= 0.8 or attempt == max_attempts - 1:
-            save_improved_result(improved, validation_report, user_dir, user_id)
-            return improved
-        
-        # Otherwise, generate feedback for the next attempt
-        feedback = improve_style_match(profile, improved["email"])
-        print(f"Attempt {attempt+1}/{max_attempts} - Getting better match with feedback")
-    
-    # We should never reach here, but just in case
-    if improved:
+        # Save the result
         save_improved_result(improved, validation_report, user_dir, user_id)
-    
-    return improved
+        return improved
+    except Exception as e:
+        print(f"Error during email improvement: {e}")
+        if improved:
+            save_improved_result(improved, {"error": str(e)}, user_dir, user_id)
+        return improved
 
 if __name__ == "__main__":
     import sys

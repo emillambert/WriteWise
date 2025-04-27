@@ -105,7 +105,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 5
+    "line_breaks": 5,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 1,
@@ -148,7 +153,12 @@
     "emoticon_count": 1,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 0
+    "line_breaks": 0,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 1,
@@ -196,7 +206,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 0
+    "line_breaks": 0,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 13,
@@ -280,7 +295,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 0
+    "line_breaks": 0,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 9,
@@ -363,7 +383,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 0
+    "line_breaks": 0,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 12,
@@ -457,7 +482,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 0
+    "line_breaks": 0,
+    "positive_word_count": 1,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "positive"
   },
   {
     "word_count": 37,
@@ -561,7 +591,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 3
+    "line_breaks": 3,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 1,
@@ -602,7 +637,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 0
+    "line_breaks": 0,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 43,
@@ -706,7 +746,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 4
+    "line_breaks": 4,
+    "positive_word_count": 1,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "positive"
   },
   {
     "word_count": 25,
@@ -807,7 +852,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 3
+    "line_breaks": 3,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 13,
@@ -886,7 +936,122 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 1
+    "line_breaks": 1,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
+  },
+  {
+    "word_count": 36,
+    "sentence_count": 2,
+    "common_words": [
+      [
+        "to",
+        3
+      ],
+      [
+        "the",
+        2
+      ],
+      [
+        "hello",
+        1
+      ],
+      [
+        "i",
+        1
+      ],
+      [
+        "have",
+        1
+      ],
+      [
+        "a",
+        1
+      ],
+      [
+        "transfer",
+        1
+      ],
+      [
+        "scheduled",
+        1
+      ],
+      [
+        "from",
+        1
+      ],
+      [
+        "bansko",
+        1
+      ]
+    ],
+    "common_phrases": [
+      "I",
+      "a transfer",
+      "Bansko",
+      "Sofia airport",
+      "the pickup time",
+      "9 am",
+      "The booking confirmation"
+    ],
+    "pos_counts": {
+      "INTJ": 1,
+      "PUNCT": 3,
+      "SPACE": 3,
+      "PRON": 1,
+      "VERB": 5,
+      "DET": 3,
+      "NOUN": 6,
+      "ADP": 3,
+      "PROPN": 2,
+      "CCONJ": 1,
+      "PART": 1,
+      "SCONJ": 1,
+      "ADJ": 1,
+      "AUX": 2,
+      "NUM": 2,
+      "SYM": 1
+    },
+    "sentiment": 0.0,
+    "subjectivity": 0.0,
+    "exclamation_count": 0,
+    "question_count": 0,
+    "avg_sentence_length": 18.0,
+    "paragraph_count": 1,
+    "politeness_counts": {
+      "please": 0,
+      "thank you": 0,
+      "thanks": 0,
+      "kind regards": 0,
+      "best regards": 0
+    },
+    "contraction_count": 0,
+    "pronoun_ratios": {
+      "I": 0.027777777777777776,
+      "we": 0.0,
+      "you": 0.0,
+      "they": 0.0
+    },
+    "hedge_count": 0,
+    "certainty_count": 0,
+    "modal_count": 0,
+    "passive_count": 1,
+    "greeting_found": true,
+    "closing_found": false,
+    "flesch_reading_ease": 65.22,
+    "flesch_kincaid_grade": 7.8,
+    "emoticon_count": 0,
+    "emoji_count": 0,
+    "bullet_points": 0,
+    "line_breaks": 4,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 50,
@@ -992,7 +1157,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 4
+    "line_breaks": 4,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 48,
@@ -1100,7 +1270,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 4
+    "line_breaks": 4,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 55,
@@ -1207,7 +1382,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 5
+    "line_breaks": 5,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 63,
@@ -1313,7 +1493,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 6
+    "line_breaks": 6,
+    "positive_word_count": 1,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 120,
@@ -1421,7 +1606,124 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 11
+    "line_breaks": 11,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
+  },
+  {
+    "word_count": 294,
+    "sentence_count": 15,
+    "common_words": [
+      [
+        "the",
+        17
+      ],
+      [
+        "to",
+        13
+      ],
+      [
+        "and",
+        8
+      ],
+      [
+        "a",
+        8
+      ],
+      [
+        "is",
+        7
+      ],
+      [
+        "we",
+        6
+      ],
+      [
+        "it",
+        5
+      ],
+      [
+        "there",
+        5
+      ],
+      [
+        "be",
+        5
+      ],
+      [
+        "this",
+        5
+      ]
+    ],
+    "common_phrases": [
+      "Dear Rens",
+      "you",
+      "your call",
+      "we",
+      "the\nsituation",
+      "Oude Delft",
+      "we",
+      "it",
+      "a ground water problem",
+      "that"
+    ],
+    "pos_counts": {
+      "PROPN": 9,
+      "PUNCT": 20,
+      "SPACE": 22,
+      "VERB": 36,
+      "PRON": 30,
+      "ADP": 25,
+      "NOUN": 41,
+      "ADV": 16,
+      "AUX": 22,
+      "PART": 11,
+      "DET": 26,
+      "CCONJ": 10,
+      "SCONJ": 4,
+      "NUM": 5,
+      "ADJ": 17
+    },
+    "sentiment": 0.04010416666666667,
+    "subjectivity": 0.40243055555555557,
+    "exclamation_count": 0,
+    "question_count": 0,
+    "avg_sentence_length": 19.6,
+    "paragraph_count": 7,
+    "politeness_counts": {
+      "please": 0,
+      "thank you": 1,
+      "thanks": 0,
+      "kind regards": 0,
+      "best regards": 0
+    },
+    "contraction_count": 0,
+    "pronoun_ratios": {
+      "I": 0.0,
+      "we": 0.02040816326530612,
+      "you": 0.003401360544217687,
+      "they": 0.0
+    },
+    "hedge_count": 0,
+    "certainty_count": 0,
+    "modal_count": 0,
+    "passive_count": 5,
+    "greeting_found": true,
+    "closing_found": false,
+    "flesch_reading_ease": 71.34,
+    "flesch_kincaid_grade": 7.5,
+    "emoticon_count": 0,
+    "emoji_count": 0,
+    "bullet_points": 0,
+    "line_breaks": 29,
+    "positive_word_count": 0,
+    "negative_word_count": 4,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 76,
@@ -1527,7 +1829,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 6
+    "line_breaks": 6,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 48,
@@ -1632,7 +1939,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 4
+    "line_breaks": 4,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 27,
@@ -1733,7 +2045,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 3
+    "line_breaks": 3,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 20,
@@ -1831,7 +2148,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 2
+    "line_breaks": 2,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 178,
@@ -1940,7 +2262,12 @@
     "emoticon_count": 5,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 27
+    "line_breaks": 27,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 129,
@@ -2049,7 +2376,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 16
+    "line_breaks": 16,
+    "positive_word_count": 1,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 73,
@@ -2156,7 +2488,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 7
+    "line_breaks": 7,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 73,
@@ -2263,7 +2600,121 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 7
+    "line_breaks": 7,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
+  },
+  {
+    "word_count": 42,
+    "sentence_count": 3,
+    "common_words": [
+      [
+        "to",
+        2
+      ],
+      [
+        "delft",
+        2
+      ],
+      [
+        "this",
+        2
+      ],
+      [
+        "and",
+        2
+      ],
+      [
+        "a",
+        2
+      ],
+      [
+        "hi",
+        1
+      ],
+      [
+        "rens",
+        1
+      ],
+      [
+        "my",
+        1
+      ],
+      [
+        "dad",
+        1
+      ],
+      [
+        "is",
+        1
+      ]
+    ],
+    "common_phrases": [
+      "Hi Rens",
+      "My dad",
+      "Delft",
+      "we",
+      "a second viewing",
+      "a place",
+      "Oude Delft 60a",
+      "you",
+      "this"
+    ],
+    "pos_counts": {
+      "PROPN": 6,
+      "PUNCT": 7,
+      "SPACE": 4,
+      "PRON": 4,
+      "NOUN": 4,
+      "AUX": 2,
+      "VERB": 5,
+      "ADP": 2,
+      "DET": 3,
+      "CCONJ": 2,
+      "PART": 1,
+      "ADJ": 1,
+      "NUM": 1
+    },
+    "sentiment": 0.0,
+    "subjectivity": 0.0,
+    "exclamation_count": 0,
+    "question_count": 1,
+    "avg_sentence_length": 14.0,
+    "paragraph_count": 1,
+    "politeness_counts": {
+      "please": 0,
+      "thank you": 0,
+      "thanks": 0,
+      "kind regards": 0,
+      "best regards": 0
+    },
+    "contraction_count": 0,
+    "pronoun_ratios": {
+      "I": 0.0,
+      "we": 0.023809523809523808,
+      "you": 0.023809523809523808,
+      "they": 0.0
+    },
+    "hedge_count": 0,
+    "certainty_count": 0,
+    "modal_count": 0,
+    "passive_count": 0,
+    "greeting_found": true,
+    "closing_found": false,
+    "flesch_reading_ease": 69.48,
+    "flesch_kincaid_grade": 6.1,
+    "emoticon_count": 1,
+    "emoji_count": 0,
+    "bullet_points": 0,
+    "line_breaks": 5,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 27,
@@ -2363,7 +2814,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 3
+    "line_breaks": 3,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.2,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 24,
@@ -2462,7 +2918,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 3
+    "line_breaks": 3,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 46,
@@ -2569,7 +3030,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 4
+    "line_breaks": 4,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 50,
@@ -2675,7 +3141,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 2
+    "line_breaks": 2,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.25,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 11,
@@ -2721,7 +3192,164 @@
     "emoticon_count": 6,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 10
+    "line_breaks": 10,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
+  },
+  {
+    "word_count": 13,
+    "sentence_count": 1,
+    "common_words": [],
+    "common_phrases": [
+      "https://www.funda.nl/en/koop/delft/appartement-88536448-oude-ijsbaan-56/"
+    ],
+    "pos_counts": {
+      "PROPN": 4,
+      "SPACE": 6,
+      "VERB": 2,
+      "NOUN": 1
+    },
+    "sentiment": 0.0,
+    "subjectivity": 0.0,
+    "exclamation_count": 0,
+    "question_count": 0,
+    "avg_sentence_length": 13.0,
+    "paragraph_count": 6,
+    "politeness_counts": {
+      "please": 0,
+      "thank you": 0,
+      "thanks": 0,
+      "kind regards": 0,
+      "best regards": 0
+    },
+    "contraction_count": 0,
+    "pronoun_ratios": {
+      "I": 0.0,
+      "we": 0.0,
+      "you": 0.0,
+      "they": 0.0
+    },
+    "hedge_count": 0,
+    "certainty_count": 0,
+    "modal_count": 0,
+    "passive_count": 0,
+    "greeting_found": false,
+    "closing_found": false,
+    "flesch_reading_ease": -595.52,
+    "flesch_kincaid_grade": 98.1,
+    "emoticon_count": 9,
+    "emoji_count": 0,
+    "bullet_points": 0,
+    "line_breaks": 12,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
+  },
+  {
+    "word_count": 17,
+    "sentence_count": 2,
+    "common_words": [
+      [
+        "tracking",
+        1
+      ],
+      [
+        "number",
+        1
+      ],
+      [
+        "entered",
+        1
+      ],
+      [
+        "please",
+        1
+      ],
+      [
+        "specify",
+        1
+      ],
+      [
+        "the",
+        1
+      ],
+      [
+        "carrier",
+        1
+      ],
+      [
+        "not",
+        1
+      ],
+      [
+        "suggested",
+        1
+      ],
+      [
+        "by",
+        1
+      ]
+    ],
+    "common_phrases": [
+      "Tracking number",
+      "the carrier",
+      "Parcel",
+      "Raben"
+    ],
+    "pos_counts": {
+      "NOUN": 3,
+      "VERB": 3,
+      "PUNCT": 2,
+      "SPACE": 2,
+      "NUM": 1,
+      "INTJ": 1,
+      "DET": 1,
+      "PART": 1,
+      "ADP": 1,
+      "PROPN": 2
+    },
+    "sentiment": 0.0,
+    "subjectivity": 0.0,
+    "exclamation_count": 0,
+    "question_count": 0,
+    "avg_sentence_length": 8.5,
+    "paragraph_count": 1,
+    "politeness_counts": {
+      "please": 1,
+      "thank you": 0,
+      "thanks": 0,
+      "kind regards": 0,
+      "best regards": 0
+    },
+    "contraction_count": 0,
+    "pronoun_ratios": {
+      "I": 0.0,
+      "we": 0.0,
+      "you": 0.0,
+      "they": 0.0
+    },
+    "hedge_count": 0,
+    "certainty_count": 0,
+    "modal_count": 0,
+    "passive_count": 0,
+    "greeting_found": false,
+    "closing_found": false,
+    "flesch_reading_ease": 41.36,
+    "flesch_kincaid_grade": 10.7,
+    "emoticon_count": 0,
+    "emoji_count": 0,
+    "bullet_points": 0,
+    "line_breaks": 3,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 14,
@@ -2815,55 +3443,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 0
-  },
-  {
-    "word_count": 1,
-    "sentence_count": 1,
-    "common_words": [
-      [
-        "test",
-        1
-      ]
-    ],
-    "common_phrases": [
-      "Test"
-    ],
-    "pos_counts": {
-      "NOUN": 1
-    },
-    "sentiment": 0.0,
-    "subjectivity": 0.0,
-    "exclamation_count": 0,
-    "question_count": 0,
-    "avg_sentence_length": 1.0,
-    "paragraph_count": 0,
-    "politeness_counts": {
-      "please": 0,
-      "thank you": 0,
-      "thanks": 0,
-      "kind regards": 0,
-      "best regards": 0
-    },
-    "contraction_count": 0,
-    "pronoun_ratios": {
-      "I": 0.0,
-      "we": 0.0,
-      "you": 0.0,
-      "they": 0.0
-    },
-    "hedge_count": 0,
-    "certainty_count": 0,
-    "modal_count": 0,
-    "passive_count": 0,
-    "greeting_found": false,
-    "closing_found": false,
-    "flesch_reading_ease": 121.22,
-    "flesch_kincaid_grade": -3.5,
-    "emoticon_count": 0,
-    "emoji_count": 0,
-    "bullet_points": 0,
-    "line_breaks": 0
+    "line_breaks": 0,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 18,
@@ -2960,7 +3545,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 0
+    "line_breaks": 0,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 18,
@@ -3057,55 +3647,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 0
-  },
-  {
-    "word_count": 1,
-    "sentence_count": 1,
-    "common_words": [
-      [
-        "test",
-        1
-      ]
-    ],
-    "common_phrases": [
-      "test"
-    ],
-    "pos_counts": {
-      "NOUN": 1
-    },
-    "sentiment": 0.0,
-    "subjectivity": 0.0,
-    "exclamation_count": 0,
-    "question_count": 0,
-    "avg_sentence_length": 1.0,
-    "paragraph_count": 0,
-    "politeness_counts": {
-      "please": 0,
-      "thank you": 0,
-      "thanks": 0,
-      "kind regards": 0,
-      "best regards": 0
-    },
-    "contraction_count": 0,
-    "pronoun_ratios": {
-      "I": 0.0,
-      "we": 0.0,
-      "you": 0.0,
-      "they": 0.0
-    },
-    "hedge_count": 0,
-    "certainty_count": 0,
-    "modal_count": 0,
-    "passive_count": 0,
-    "greeting_found": false,
-    "closing_found": false,
-    "flesch_reading_ease": 121.22,
-    "flesch_kincaid_grade": -3.5,
-    "emoticon_count": 0,
-    "emoji_count": 0,
-    "bullet_points": 0,
-    "line_breaks": 0
+    "line_breaks": 0,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 3,
@@ -3148,60 +3695,85 @@
     "emoticon_count": 5,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 2
+    "line_breaks": 2,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
-    "word_count": 7,
+    "word_count": 20,
     "sentence_count": 1,
     "common_words": [
       [
-        "you",
+        "for",
+        2
+      ],
+      [
+        "is",
         1
       ],
       [
-        "can",
+        "it",
         1
       ],
       [
-        "sit",
+        "possible",
         1
       ],
       [
-        "on",
+        "to",
         1
       ],
       [
-        "ur",
+        "make",
         1
       ],
       [
-        "bed",
+        "a",
         1
       ],
       [
-        "now",
+        "reservation",
+        1
+      ],
+      [
+        "tomorrow",
+        1
+      ],
+      [
+        "june",
         1
       ]
     ],
     "common_phrases": [
-      "you",
-      "ur",
-      "bed"
+      "it",
+      "a reservation",
+      "tomorrow",
+      "June 14th",
+      "8 pm",
+      "17\npeople"
     ],
     "pos_counts": {
-      "PRON": 1,
       "AUX": 1,
+      "PRON": 1,
+      "ADJ": 1,
+      "PART": 1,
       "VERB": 1,
-      "ADP": 1,
+      "DET": 1,
+      "NOUN": 5,
+      "ADP": 3,
+      "PUNCT": 2,
       "PROPN": 1,
-      "NOUN": 1,
-      "ADV": 1
+      "NUM": 2,
+      "SPACE": 1
     },
     "sentiment": 0.0,
-    "subjectivity": 0.0,
+    "subjectivity": 1.0,
     "exclamation_count": 0,
-    "question_count": 0,
-    "avg_sentence_length": 7.0,
+    "question_count": 1,
+    "avg_sentence_length": 20.0,
     "paragraph_count": 0,
     "politeness_counts": {
       "please": 0,
@@ -3214,7 +3786,7 @@
     "pronoun_ratios": {
       "I": 0.0,
       "we": 0.0,
-      "you": 0.14285714285714285,
+      "you": 0.0,
       "they": 0.0
     },
     "hedge_count": 0,
@@ -3223,12 +3795,17 @@
     "passive_count": 0,
     "greeting_found": false,
     "closing_found": false,
-    "flesch_reading_ease": 115.13,
-    "flesch_kincaid_grade": -1.2,
+    "flesch_reading_ease": 62.68,
+    "flesch_kincaid_grade": 8.7,
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 0
+    "line_breaks": 1,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 1,
@@ -3269,7 +3846,12 @@
     "emoticon_count": 1,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 0
+    "line_breaks": 0,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 67,
@@ -3377,7 +3959,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 5
+    "line_breaks": 5,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 1,
@@ -3420,7 +4007,12 @@
     "emoticon_count": 1,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 0
+    "line_breaks": 0,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 1,
@@ -3468,7 +4060,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 0
+    "line_breaks": 0,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 13,
@@ -3552,7 +4149,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 0
+    "line_breaks": 0,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 9,
@@ -3635,7 +4237,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 0
+    "line_breaks": 0,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 12,
@@ -3729,7 +4336,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 0
+    "line_breaks": 0,
+    "positive_word_count": 1,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "positive"
   },
   {
     "word_count": 37,
@@ -3833,7 +4445,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 3
+    "line_breaks": 3,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 1,
@@ -3874,7 +4491,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 0
+    "line_breaks": 0,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 43,
@@ -3978,7 +4600,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 4
+    "line_breaks": 4,
+    "positive_word_count": 1,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "positive"
   },
   {
     "word_count": 25,
@@ -4079,7 +4706,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 3
+    "line_breaks": 3,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 13,
@@ -4158,7 +4790,122 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 1
+    "line_breaks": 1,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
+  },
+  {
+    "word_count": 36,
+    "sentence_count": 2,
+    "common_words": [
+      [
+        "to",
+        3
+      ],
+      [
+        "the",
+        2
+      ],
+      [
+        "hello",
+        1
+      ],
+      [
+        "i",
+        1
+      ],
+      [
+        "have",
+        1
+      ],
+      [
+        "a",
+        1
+      ],
+      [
+        "transfer",
+        1
+      ],
+      [
+        "scheduled",
+        1
+      ],
+      [
+        "from",
+        1
+      ],
+      [
+        "bansko",
+        1
+      ]
+    ],
+    "common_phrases": [
+      "I",
+      "a transfer",
+      "Bansko",
+      "Sofia airport",
+      "the pickup time",
+      "9 am",
+      "The booking confirmation"
+    ],
+    "pos_counts": {
+      "INTJ": 1,
+      "PUNCT": 3,
+      "SPACE": 3,
+      "PRON": 1,
+      "VERB": 5,
+      "DET": 3,
+      "NOUN": 6,
+      "ADP": 3,
+      "PROPN": 2,
+      "CCONJ": 1,
+      "PART": 1,
+      "SCONJ": 1,
+      "ADJ": 1,
+      "AUX": 2,
+      "NUM": 2,
+      "SYM": 1
+    },
+    "sentiment": 0.0,
+    "subjectivity": 0.0,
+    "exclamation_count": 0,
+    "question_count": 0,
+    "avg_sentence_length": 18.0,
+    "paragraph_count": 1,
+    "politeness_counts": {
+      "please": 0,
+      "thank you": 0,
+      "thanks": 0,
+      "kind regards": 0,
+      "best regards": 0
+    },
+    "contraction_count": 0,
+    "pronoun_ratios": {
+      "I": 0.027777777777777776,
+      "we": 0.0,
+      "you": 0.0,
+      "they": 0.0
+    },
+    "hedge_count": 0,
+    "certainty_count": 0,
+    "modal_count": 0,
+    "passive_count": 1,
+    "greeting_found": true,
+    "closing_found": false,
+    "flesch_reading_ease": 65.22,
+    "flesch_kincaid_grade": 7.8,
+    "emoticon_count": 0,
+    "emoji_count": 0,
+    "bullet_points": 0,
+    "line_breaks": 4,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 50,
@@ -4264,7 +5011,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 4
+    "line_breaks": 4,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 48,
@@ -4372,7 +5124,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 4
+    "line_breaks": 4,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 55,
@@ -4479,7 +5236,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 5
+    "line_breaks": 5,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 63,
@@ -4585,7 +5347,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 6
+    "line_breaks": 6,
+    "positive_word_count": 1,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 120,
@@ -4693,7 +5460,124 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 11
+    "line_breaks": 11,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
+  },
+  {
+    "word_count": 294,
+    "sentence_count": 15,
+    "common_words": [
+      [
+        "the",
+        17
+      ],
+      [
+        "to",
+        13
+      ],
+      [
+        "and",
+        8
+      ],
+      [
+        "a",
+        8
+      ],
+      [
+        "is",
+        7
+      ],
+      [
+        "we",
+        6
+      ],
+      [
+        "it",
+        5
+      ],
+      [
+        "there",
+        5
+      ],
+      [
+        "be",
+        5
+      ],
+      [
+        "this",
+        5
+      ]
+    ],
+    "common_phrases": [
+      "Dear Rens",
+      "you",
+      "your call",
+      "we",
+      "the\nsituation",
+      "Oude Delft",
+      "we",
+      "it",
+      "a ground water problem",
+      "that"
+    ],
+    "pos_counts": {
+      "PROPN": 9,
+      "PUNCT": 20,
+      "SPACE": 22,
+      "VERB": 36,
+      "PRON": 30,
+      "ADP": 25,
+      "NOUN": 41,
+      "ADV": 16,
+      "AUX": 22,
+      "PART": 11,
+      "DET": 26,
+      "CCONJ": 10,
+      "SCONJ": 4,
+      "NUM": 5,
+      "ADJ": 17
+    },
+    "sentiment": 0.04010416666666667,
+    "subjectivity": 0.40243055555555557,
+    "exclamation_count": 0,
+    "question_count": 0,
+    "avg_sentence_length": 19.6,
+    "paragraph_count": 7,
+    "politeness_counts": {
+      "please": 0,
+      "thank you": 1,
+      "thanks": 0,
+      "kind regards": 0,
+      "best regards": 0
+    },
+    "contraction_count": 0,
+    "pronoun_ratios": {
+      "I": 0.0,
+      "we": 0.02040816326530612,
+      "you": 0.003401360544217687,
+      "they": 0.0
+    },
+    "hedge_count": 0,
+    "certainty_count": 0,
+    "modal_count": 0,
+    "passive_count": 5,
+    "greeting_found": true,
+    "closing_found": false,
+    "flesch_reading_ease": 71.34,
+    "flesch_kincaid_grade": 7.5,
+    "emoticon_count": 0,
+    "emoji_count": 0,
+    "bullet_points": 0,
+    "line_breaks": 29,
+    "positive_word_count": 0,
+    "negative_word_count": 4,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 76,
@@ -4799,7 +5683,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 6
+    "line_breaks": 6,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 48,
@@ -4904,7 +5793,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 4
+    "line_breaks": 4,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 27,
@@ -5005,7 +5899,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 3
+    "line_breaks": 3,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 20,
@@ -5103,7 +6002,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 2
+    "line_breaks": 2,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 178,
@@ -5212,7 +6116,12 @@
     "emoticon_count": 5,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 27
+    "line_breaks": 27,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 129,
@@ -5321,7 +6230,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 16
+    "line_breaks": 16,
+    "positive_word_count": 1,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 73,
@@ -5428,7 +6342,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 7
+    "line_breaks": 7,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 73,
@@ -5535,7 +6454,121 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 7
+    "line_breaks": 7,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
+  },
+  {
+    "word_count": 42,
+    "sentence_count": 3,
+    "common_words": [
+      [
+        "to",
+        2
+      ],
+      [
+        "delft",
+        2
+      ],
+      [
+        "this",
+        2
+      ],
+      [
+        "and",
+        2
+      ],
+      [
+        "a",
+        2
+      ],
+      [
+        "hi",
+        1
+      ],
+      [
+        "rens",
+        1
+      ],
+      [
+        "my",
+        1
+      ],
+      [
+        "dad",
+        1
+      ],
+      [
+        "is",
+        1
+      ]
+    ],
+    "common_phrases": [
+      "Hi Rens",
+      "My dad",
+      "Delft",
+      "we",
+      "a second viewing",
+      "a place",
+      "Oude Delft 60a",
+      "you",
+      "this"
+    ],
+    "pos_counts": {
+      "PROPN": 6,
+      "PUNCT": 7,
+      "SPACE": 4,
+      "PRON": 4,
+      "NOUN": 4,
+      "AUX": 2,
+      "VERB": 5,
+      "ADP": 2,
+      "DET": 3,
+      "CCONJ": 2,
+      "PART": 1,
+      "ADJ": 1,
+      "NUM": 1
+    },
+    "sentiment": 0.0,
+    "subjectivity": 0.0,
+    "exclamation_count": 0,
+    "question_count": 1,
+    "avg_sentence_length": 14.0,
+    "paragraph_count": 1,
+    "politeness_counts": {
+      "please": 0,
+      "thank you": 0,
+      "thanks": 0,
+      "kind regards": 0,
+      "best regards": 0
+    },
+    "contraction_count": 0,
+    "pronoun_ratios": {
+      "I": 0.0,
+      "we": 0.023809523809523808,
+      "you": 0.023809523809523808,
+      "they": 0.0
+    },
+    "hedge_count": 0,
+    "certainty_count": 0,
+    "modal_count": 0,
+    "passive_count": 0,
+    "greeting_found": true,
+    "closing_found": false,
+    "flesch_reading_ease": 69.48,
+    "flesch_kincaid_grade": 6.1,
+    "emoticon_count": 1,
+    "emoji_count": 0,
+    "bullet_points": 0,
+    "line_breaks": 5,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 27,
@@ -5635,7 +6668,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 3
+    "line_breaks": 3,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.2,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 24,
@@ -5734,7 +6772,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 3
+    "line_breaks": 3,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 46,
@@ -5841,7 +6884,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 4
+    "line_breaks": 4,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 50,
@@ -5947,7 +6995,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 2
+    "line_breaks": 2,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.25,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 11,
@@ -5993,7 +7046,164 @@
     "emoticon_count": 6,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 10
+    "line_breaks": 10,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
+  },
+  {
+    "word_count": 13,
+    "sentence_count": 1,
+    "common_words": [],
+    "common_phrases": [
+      "https://www.funda.nl/en/koop/delft/appartement-88536448-oude-ijsbaan-56/"
+    ],
+    "pos_counts": {
+      "PROPN": 4,
+      "SPACE": 6,
+      "VERB": 2,
+      "NOUN": 1
+    },
+    "sentiment": 0.0,
+    "subjectivity": 0.0,
+    "exclamation_count": 0,
+    "question_count": 0,
+    "avg_sentence_length": 13.0,
+    "paragraph_count": 6,
+    "politeness_counts": {
+      "please": 0,
+      "thank you": 0,
+      "thanks": 0,
+      "kind regards": 0,
+      "best regards": 0
+    },
+    "contraction_count": 0,
+    "pronoun_ratios": {
+      "I": 0.0,
+      "we": 0.0,
+      "you": 0.0,
+      "they": 0.0
+    },
+    "hedge_count": 0,
+    "certainty_count": 0,
+    "modal_count": 0,
+    "passive_count": 0,
+    "greeting_found": false,
+    "closing_found": false,
+    "flesch_reading_ease": -595.52,
+    "flesch_kincaid_grade": 98.1,
+    "emoticon_count": 9,
+    "emoji_count": 0,
+    "bullet_points": 0,
+    "line_breaks": 12,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
+  },
+  {
+    "word_count": 17,
+    "sentence_count": 2,
+    "common_words": [
+      [
+        "tracking",
+        1
+      ],
+      [
+        "number",
+        1
+      ],
+      [
+        "entered",
+        1
+      ],
+      [
+        "please",
+        1
+      ],
+      [
+        "specify",
+        1
+      ],
+      [
+        "the",
+        1
+      ],
+      [
+        "carrier",
+        1
+      ],
+      [
+        "not",
+        1
+      ],
+      [
+        "suggested",
+        1
+      ],
+      [
+        "by",
+        1
+      ]
+    ],
+    "common_phrases": [
+      "Tracking number",
+      "the carrier",
+      "Parcel",
+      "Raben"
+    ],
+    "pos_counts": {
+      "NOUN": 3,
+      "VERB": 3,
+      "PUNCT": 2,
+      "SPACE": 2,
+      "NUM": 1,
+      "INTJ": 1,
+      "DET": 1,
+      "PART": 1,
+      "ADP": 1,
+      "PROPN": 2
+    },
+    "sentiment": 0.0,
+    "subjectivity": 0.0,
+    "exclamation_count": 0,
+    "question_count": 0,
+    "avg_sentence_length": 8.5,
+    "paragraph_count": 1,
+    "politeness_counts": {
+      "please": 1,
+      "thank you": 0,
+      "thanks": 0,
+      "kind regards": 0,
+      "best regards": 0
+    },
+    "contraction_count": 0,
+    "pronoun_ratios": {
+      "I": 0.0,
+      "we": 0.0,
+      "you": 0.0,
+      "they": 0.0
+    },
+    "hedge_count": 0,
+    "certainty_count": 0,
+    "modal_count": 0,
+    "passive_count": 0,
+    "greeting_found": false,
+    "closing_found": false,
+    "flesch_reading_ease": 41.36,
+    "flesch_kincaid_grade": 10.7,
+    "emoticon_count": 0,
+    "emoji_count": 0,
+    "bullet_points": 0,
+    "line_breaks": 3,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 14,
@@ -6087,55 +7297,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 0
-  },
-  {
-    "word_count": 1,
-    "sentence_count": 1,
-    "common_words": [
-      [
-        "test",
-        1
-      ]
-    ],
-    "common_phrases": [
-      "Test"
-    ],
-    "pos_counts": {
-      "NOUN": 1
-    },
-    "sentiment": 0.0,
-    "subjectivity": 0.0,
-    "exclamation_count": 0,
-    "question_count": 0,
-    "avg_sentence_length": 1.0,
-    "paragraph_count": 0,
-    "politeness_counts": {
-      "please": 0,
-      "thank you": 0,
-      "thanks": 0,
-      "kind regards": 0,
-      "best regards": 0
-    },
-    "contraction_count": 0,
-    "pronoun_ratios": {
-      "I": 0.0,
-      "we": 0.0,
-      "you": 0.0,
-      "they": 0.0
-    },
-    "hedge_count": 0,
-    "certainty_count": 0,
-    "modal_count": 0,
-    "passive_count": 0,
-    "greeting_found": false,
-    "closing_found": false,
-    "flesch_reading_ease": 121.22,
-    "flesch_kincaid_grade": -3.5,
-    "emoticon_count": 0,
-    "emoji_count": 0,
-    "bullet_points": 0,
-    "line_breaks": 0
+    "line_breaks": 0,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 18,
@@ -6232,7 +7399,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 0
+    "line_breaks": 0,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 18,
@@ -6329,55 +7501,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 0
-  },
-  {
-    "word_count": 1,
-    "sentence_count": 1,
-    "common_words": [
-      [
-        "test",
-        1
-      ]
-    ],
-    "common_phrases": [
-      "test"
-    ],
-    "pos_counts": {
-      "NOUN": 1
-    },
-    "sentiment": 0.0,
-    "subjectivity": 0.0,
-    "exclamation_count": 0,
-    "question_count": 0,
-    "avg_sentence_length": 1.0,
-    "paragraph_count": 0,
-    "politeness_counts": {
-      "please": 0,
-      "thank you": 0,
-      "thanks": 0,
-      "kind regards": 0,
-      "best regards": 0
-    },
-    "contraction_count": 0,
-    "pronoun_ratios": {
-      "I": 0.0,
-      "we": 0.0,
-      "you": 0.0,
-      "they": 0.0
-    },
-    "hedge_count": 0,
-    "certainty_count": 0,
-    "modal_count": 0,
-    "passive_count": 0,
-    "greeting_found": false,
-    "closing_found": false,
-    "flesch_reading_ease": 121.22,
-    "flesch_kincaid_grade": -3.5,
-    "emoticon_count": 0,
-    "emoji_count": 0,
-    "bullet_points": 0,
-    "line_breaks": 0
+    "line_breaks": 0,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 3,
@@ -6420,60 +7549,85 @@
     "emoticon_count": 5,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 2
+    "line_breaks": 2,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
-    "word_count": 7,
+    "word_count": 20,
     "sentence_count": 1,
     "common_words": [
       [
-        "you",
+        "for",
+        2
+      ],
+      [
+        "is",
         1
       ],
       [
-        "can",
+        "it",
         1
       ],
       [
-        "sit",
+        "possible",
         1
       ],
       [
-        "on",
+        "to",
         1
       ],
       [
-        "ur",
+        "make",
         1
       ],
       [
-        "bed",
+        "a",
         1
       ],
       [
-        "now",
+        "reservation",
+        1
+      ],
+      [
+        "tomorrow",
+        1
+      ],
+      [
+        "june",
         1
       ]
     ],
     "common_phrases": [
-      "you",
-      "ur",
-      "bed"
+      "it",
+      "a reservation",
+      "tomorrow",
+      "June 14th",
+      "8 pm",
+      "17\npeople"
     ],
     "pos_counts": {
-      "PRON": 1,
       "AUX": 1,
+      "PRON": 1,
+      "ADJ": 1,
+      "PART": 1,
       "VERB": 1,
-      "ADP": 1,
+      "DET": 1,
+      "NOUN": 5,
+      "ADP": 3,
+      "PUNCT": 2,
       "PROPN": 1,
-      "NOUN": 1,
-      "ADV": 1
+      "NUM": 2,
+      "SPACE": 1
     },
     "sentiment": 0.0,
-    "subjectivity": 0.0,
+    "subjectivity": 1.0,
     "exclamation_count": 0,
-    "question_count": 0,
-    "avg_sentence_length": 7.0,
+    "question_count": 1,
+    "avg_sentence_length": 20.0,
     "paragraph_count": 0,
     "politeness_counts": {
       "please": 0,
@@ -6486,7 +7640,7 @@
     "pronoun_ratios": {
       "I": 0.0,
       "we": 0.0,
-      "you": 0.14285714285714285,
+      "you": 0.0,
       "they": 0.0
     },
     "hedge_count": 0,
@@ -6495,12 +7649,17 @@
     "passive_count": 0,
     "greeting_found": false,
     "closing_found": false,
-    "flesch_reading_ease": 115.13,
-    "flesch_kincaid_grade": -1.2,
+    "flesch_reading_ease": 62.68,
+    "flesch_kincaid_grade": 8.7,
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 0
+    "line_breaks": 1,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 1,
@@ -6541,7 +7700,12 @@
     "emoticon_count": 1,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 0
+    "line_breaks": 0,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 67,
@@ -6649,7 +7813,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 5
+    "line_breaks": 5,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 1,
@@ -6692,7 +7861,12 @@
     "emoticon_count": 1,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 0
+    "line_breaks": 0,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 1,
@@ -6740,7 +7914,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 0
+    "line_breaks": 0,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 13,
@@ -6824,7 +8003,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 0
+    "line_breaks": 0,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 9,
@@ -6907,7 +8091,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 0
+    "line_breaks": 0,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 12,
@@ -7001,7 +8190,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 0
+    "line_breaks": 0,
+    "positive_word_count": 1,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "positive"
   },
   {
     "word_count": 37,
@@ -7105,7 +8299,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 3
+    "line_breaks": 3,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 1,
@@ -7146,7 +8345,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 0
+    "line_breaks": 0,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 43,
@@ -7250,7 +8454,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 4
+    "line_breaks": 4,
+    "positive_word_count": 1,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "positive"
   },
   {
     "word_count": 25,
@@ -7351,7 +8560,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 3
+    "line_breaks": 3,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 13,
@@ -7430,7 +8644,122 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 1
+    "line_breaks": 1,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
+  },
+  {
+    "word_count": 36,
+    "sentence_count": 2,
+    "common_words": [
+      [
+        "to",
+        3
+      ],
+      [
+        "the",
+        2
+      ],
+      [
+        "hello",
+        1
+      ],
+      [
+        "i",
+        1
+      ],
+      [
+        "have",
+        1
+      ],
+      [
+        "a",
+        1
+      ],
+      [
+        "transfer",
+        1
+      ],
+      [
+        "scheduled",
+        1
+      ],
+      [
+        "from",
+        1
+      ],
+      [
+        "bansko",
+        1
+      ]
+    ],
+    "common_phrases": [
+      "I",
+      "a transfer",
+      "Bansko",
+      "Sofia airport",
+      "the pickup time",
+      "9 am",
+      "The booking confirmation"
+    ],
+    "pos_counts": {
+      "INTJ": 1,
+      "PUNCT": 3,
+      "SPACE": 3,
+      "PRON": 1,
+      "VERB": 5,
+      "DET": 3,
+      "NOUN": 6,
+      "ADP": 3,
+      "PROPN": 2,
+      "CCONJ": 1,
+      "PART": 1,
+      "SCONJ": 1,
+      "ADJ": 1,
+      "AUX": 2,
+      "NUM": 2,
+      "SYM": 1
+    },
+    "sentiment": 0.0,
+    "subjectivity": 0.0,
+    "exclamation_count": 0,
+    "question_count": 0,
+    "avg_sentence_length": 18.0,
+    "paragraph_count": 1,
+    "politeness_counts": {
+      "please": 0,
+      "thank you": 0,
+      "thanks": 0,
+      "kind regards": 0,
+      "best regards": 0
+    },
+    "contraction_count": 0,
+    "pronoun_ratios": {
+      "I": 0.027777777777777776,
+      "we": 0.0,
+      "you": 0.0,
+      "they": 0.0
+    },
+    "hedge_count": 0,
+    "certainty_count": 0,
+    "modal_count": 0,
+    "passive_count": 1,
+    "greeting_found": true,
+    "closing_found": false,
+    "flesch_reading_ease": 65.22,
+    "flesch_kincaid_grade": 7.8,
+    "emoticon_count": 0,
+    "emoji_count": 0,
+    "bullet_points": 0,
+    "line_breaks": 4,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 50,
@@ -7536,7 +8865,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 4
+    "line_breaks": 4,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 48,
@@ -7644,7 +8978,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 4
+    "line_breaks": 4,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 55,
@@ -7751,7 +9090,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 5
+    "line_breaks": 5,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 63,
@@ -7857,7 +9201,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 6
+    "line_breaks": 6,
+    "positive_word_count": 1,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 120,
@@ -7965,7 +9314,124 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 11
+    "line_breaks": 11,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
+  },
+  {
+    "word_count": 294,
+    "sentence_count": 15,
+    "common_words": [
+      [
+        "the",
+        17
+      ],
+      [
+        "to",
+        13
+      ],
+      [
+        "and",
+        8
+      ],
+      [
+        "a",
+        8
+      ],
+      [
+        "is",
+        7
+      ],
+      [
+        "we",
+        6
+      ],
+      [
+        "it",
+        5
+      ],
+      [
+        "there",
+        5
+      ],
+      [
+        "be",
+        5
+      ],
+      [
+        "this",
+        5
+      ]
+    ],
+    "common_phrases": [
+      "Dear Rens",
+      "you",
+      "your call",
+      "we",
+      "the\nsituation",
+      "Oude Delft",
+      "we",
+      "it",
+      "a ground water problem",
+      "that"
+    ],
+    "pos_counts": {
+      "PROPN": 9,
+      "PUNCT": 20,
+      "SPACE": 22,
+      "VERB": 36,
+      "PRON": 30,
+      "ADP": 25,
+      "NOUN": 41,
+      "ADV": 16,
+      "AUX": 22,
+      "PART": 11,
+      "DET": 26,
+      "CCONJ": 10,
+      "SCONJ": 4,
+      "NUM": 5,
+      "ADJ": 17
+    },
+    "sentiment": 0.04010416666666667,
+    "subjectivity": 0.40243055555555557,
+    "exclamation_count": 0,
+    "question_count": 0,
+    "avg_sentence_length": 19.6,
+    "paragraph_count": 7,
+    "politeness_counts": {
+      "please": 0,
+      "thank you": 1,
+      "thanks": 0,
+      "kind regards": 0,
+      "best regards": 0
+    },
+    "contraction_count": 0,
+    "pronoun_ratios": {
+      "I": 0.0,
+      "we": 0.02040816326530612,
+      "you": 0.003401360544217687,
+      "they": 0.0
+    },
+    "hedge_count": 0,
+    "certainty_count": 0,
+    "modal_count": 0,
+    "passive_count": 5,
+    "greeting_found": true,
+    "closing_found": false,
+    "flesch_reading_ease": 71.34,
+    "flesch_kincaid_grade": 7.5,
+    "emoticon_count": 0,
+    "emoji_count": 0,
+    "bullet_points": 0,
+    "line_breaks": 29,
+    "positive_word_count": 0,
+    "negative_word_count": 4,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 76,
@@ -8071,7 +9537,12 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 6
+    "line_breaks": 6,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   },
   {
     "word_count": 48,
@@ -8176,836 +9647,11 @@
     "emoticon_count": 0,
     "emoji_count": 0,
     "bullet_points": 0,
-    "line_breaks": 4
-  },
-  {
-    "word_count": 27,
-    "sentence_count": 1,
-    "common_words": [
-      [
-        "the",
-        3
-      ],
-      [
-        "is",
-        3
-      ],
-      [
-        "inspection",
-        2
-      ],
-      [
-        "hi",
-        1
-      ],
-      [
-        "rens",
-        1
-      ],
-      [
-        "company",
-        1
-      ],
-      [
-        "asking",
-        1
-      ],
-      [
-        "if",
-        1
-      ],
-      [
-        "seller",
-        1
-      ],
-      [
-        "available",
-        1
-      ]
-    ],
-    "common_phrases": [
-      "Hi Rens",
-      "The inspection company",
-      "the seller",
-      "the\ninspection",
-      "it",
-      "Thursday",
-      "2pm"
-    ],
-    "pos_counts": {
-      "PROPN": 3,
-      "PUNCT": 3,
-      "SPACE": 2,
-      "DET": 3,
-      "NOUN": 5,
-      "AUX": 3,
-      "VERB": 1,
-      "SCONJ": 1,
-      "ADJ": 1,
-      "ADP": 3,
-      "PRON": 1,
-      "NUM": 1
-    },
-    "sentiment": 0.4,
-    "subjectivity": 0.4,
-    "exclamation_count": 0,
-    "question_count": 0,
-    "avg_sentence_length": 27.0,
-    "paragraph_count": 1,
-    "politeness_counts": {
-      "please": 0,
-      "thank you": 0,
-      "thanks": 0,
-      "kind regards": 0,
-      "best regards": 0
-    },
-    "contraction_count": 0,
-    "pronoun_ratios": {
-      "I": 0.0,
-      "we": 0.0,
-      "you": 0.0,
-      "they": 0.0
-    },
-    "hedge_count": 0,
-    "certainty_count": 0,
-    "modal_count": 0,
-    "passive_count": 0,
-    "greeting_found": true,
-    "closing_found": false,
-    "flesch_reading_ease": 50.16,
-    "flesch_kincaid_grade": 11.5,
-    "emoticon_count": 0,
-    "emoji_count": 0,
-    "bullet_points": 0,
-    "line_breaks": 3
-  },
-  {
-    "word_count": 20,
-    "sentence_count": 1,
-    "common_words": [
-      [
-        "a",
-        2
-      ],
-      [
-        "hi",
-        1
-      ],
-      [
-        "rens",
-        1
-      ],
-      [
-        "is",
-        1
-      ],
-      [
-        "there",
-        1
-      ],
-      [
-        "solicitor",
-        1
-      ],
-      [
-        "you",
-        1
-      ],
-      [
-        "can",
-        1
-      ],
-      [
-        "recommend",
-        1
-      ],
-      [
-        "for",
-        1
-      ]
-    ],
-    "common_phrases": [
-      "Hi Rens",
-      "a solicitor",
-      "you",
-      "the purchase",
-      "Oude Delft",
-      "a"
-    ],
-    "pos_counts": {
-      "PROPN": 4,
-      "PUNCT": 2,
-      "SPACE": 1,
-      "AUX": 2,
-      "PRON": 3,
-      "DET": 2,
-      "NOUN": 2,
-      "VERB": 1,
-      "ADP": 2,
-      "NUM": 1
-    },
-    "sentiment": 0.0,
-    "subjectivity": 0.0,
-    "exclamation_count": 0,
-    "question_count": 1,
-    "avg_sentence_length": 20.0,
-    "paragraph_count": 1,
-    "politeness_counts": {
-      "please": 0,
-      "thank you": 0,
-      "thanks": 0,
-      "kind regards": 0,
-      "best regards": 0
-    },
-    "contraction_count": 0,
-    "pronoun_ratios": {
-      "I": 0.0,
-      "we": 0.0,
-      "you": 0.05,
-      "they": 0.0
-    },
-    "hedge_count": 0,
-    "certainty_count": 0,
-    "modal_count": 0,
-    "passive_count": 0,
-    "greeting_found": true,
-    "closing_found": false,
-    "flesch_reading_ease": 71.14,
-    "flesch_kincaid_grade": 7.6,
-    "emoticon_count": 0,
-    "emoji_count": 0,
-    "bullet_points": 0,
-    "line_breaks": 2
-  },
-  {
-    "word_count": 178,
-    "sentence_count": 8,
-    "common_words": [
-      [
-        "the",
-        9
-      ],
-      [
-        "to",
-        6
-      ],
-      [
-        "we",
-        6
-      ],
-      [
-        "is",
-        5
-      ],
-      [
-        "what",
-        4
-      ],
-      [
-        "as",
-        3
-      ],
-      [
-        "it",
-        3
-      ],
-      [
-        "a",
-        3
-      ],
-      [
-        "few",
-        3
-      ],
-      [
-        "this",
-        2
-      ]
-    ],
-    "common_phrases": [
-      "Hi Rens",
-      "My mum",
-      "Delft",
-      "we",
-      "we",
-      "Oude Delft",
-      "she",
-      "it",
-      "It",
-      "Friday\nmorning"
-    ],
-    "pos_counts": {
-      "PROPN": 10,
-      "PUNCT": 21,
-      "SPACE": 17,
-      "PRON": 17,
-      "NOUN": 20,
-      "AUX": 15,
-      "VERB": 18,
-      "DET": 13,
-      "ADP": 10,
-      "CCONJ": 3,
-      "SCONJ": 6,
-      "NUM": 4,
-      "ADJ": 8,
-      "PART": 7,
-      "ADV": 5,
-      "SYM": 1,
-      "X": 3
-    },
-    "sentiment": 0.0861111111111111,
-    "subjectivity": 0.3351851851851852,
-    "exclamation_count": 0,
-    "question_count": 3,
-    "avg_sentence_length": 22.25,
-    "paragraph_count": 11,
-    "politeness_counts": {
-      "please": 0,
-      "thank you": 0,
-      "thanks": 0,
-      "kind regards": 0,
-      "best regards": 0
-    },
-    "contraction_count": 2,
-    "pronoun_ratios": {
-      "I": 0.0056179775280898875,
-      "we": 0.033707865168539325,
-      "you": 0.0,
-      "they": 0.0
-    },
-    "hedge_count": 0,
-    "certainty_count": 0,
-    "modal_count": 0,
-    "passive_count": 3,
-    "greeting_found": true,
-    "closing_found": false,
-    "flesch_reading_ease": 54.42,
-    "flesch_kincaid_grade": 9.8,
-    "emoticon_count": 5,
-    "emoji_count": 0,
-    "bullet_points": 0,
-    "line_breaks": 27
-  },
-  {
-    "word_count": 129,
-    "sentence_count": 8,
-    "common_words": [
-      [
-        "the",
-        10
-      ],
-      [
-        "is",
-        5
-      ],
-      [
-        "a",
-        4
-      ],
-      [
-        "what",
-        4
-      ],
-      [
-        "have",
-        2
-      ],
-      [
-        "rens",
-        2
-      ],
-      [
-        "before",
-        2
-      ],
-      [
-        "bid",
-        2
-      ],
-      [
-        "we",
-        2
-      ],
-      [
-        "to",
-        2
-      ]
-    ],
-    "common_phrases": [
-      "I",
-      "this",
-      "my thoughts",
-      "Dear Rens / Lisette",
-      "a bid",
-      "Oude Delft",
-      "60 a",
-      "we",
-      "a few questions",
-      "we"
-    ],
-    "pos_counts": {
-      "PRON": 12,
-      "AUX": 12,
-      "PART": 4,
-      "VERB": 11,
-      "ADV": 4,
-      "ADP": 8,
-      "NOUN": 16,
-      "PUNCT": 16,
-      "SPACE": 10,
-      "PROPN": 6,
-      "SYM": 1,
-      "DET": 13,
-      "NUM": 4,
-      "ADJ": 4,
-      "X": 3,
-      "SCONJ": 3,
-      "CCONJ": 2
-    },
-    "sentiment": 0.07420634920634919,
-    "subjectivity": 0.4626984126984127,
-    "exclamation_count": 0,
-    "question_count": 4,
-    "avg_sentence_length": 16.125,
-    "paragraph_count": 6,
-    "politeness_counts": {
-      "please": 0,
-      "thank you": 0,
-      "thanks": 0,
-      "kind regards": 0,
-      "best regards": 0
-    },
-    "contraction_count": 0,
-    "pronoun_ratios": {
-      "I": 0.007751937984496124,
-      "we": 0.015503875968992248,
-      "you": 0.0,
-      "they": 0.0
-    },
-    "hedge_count": 0,
-    "certainty_count": 0,
-    "modal_count": 0,
-    "passive_count": 3,
-    "greeting_found": false,
-    "closing_found": false,
-    "flesch_reading_ease": 77.03,
-    "flesch_kincaid_grade": 5.3,
-    "emoticon_count": 0,
-    "emoji_count": 0,
-    "bullet_points": 0,
-    "line_breaks": 16
-  },
-  {
-    "word_count": 73,
-    "sentence_count": 3,
-    "common_words": [
-      [
-        "a",
-        5
-      ],
-      [
-        "we",
-        3
-      ],
-      [
-        "oude",
-        3
-      ],
-      [
-        "delft",
-        3
-      ],
-      [
-        "bid",
-        2
-      ],
-      [
-        "feel",
-        2
-      ],
-      [
-        "it",
-        2
-      ],
-      [
-        "is",
-        2
-      ],
-      [
-        "to",
-        2
-      ],
-      [
-        "at",
-        2
-      ]
-    ],
-    "common_phrases": [
-      "Dear Rens",
-      "We",
-      "a bid",
-      "Oude Delft",
-      "a",
-      "it",
-      "it",
-      "Oude Delft",
-      "which",
-      "3.595 EUR/m^2"
-    ],
-    "pos_counts": {
-      "PROPN": 11,
-      "PUNCT": 7,
-      "SPACE": 5,
-      "PRON": 11,
-      "AUX": 4,
-      "ADJ": 2,
-      "ADP": 6,
-      "VERB": 10,
-      "DET": 3,
-      "NOUN": 3,
-      "NUM": 6,
-      "ADV": 1,
-      "SCONJ": 2,
-      "SYM": 1,
-      "PART": 1
-    },
-    "sentiment": 0.475,
-    "subjectivity": 0.7,
-    "exclamation_count": 0,
-    "question_count": 0,
-    "avg_sentence_length": 24.333333333333332,
-    "paragraph_count": 2,
-    "politeness_counts": {
-      "please": 0,
-      "thank you": 0,
-      "thanks": 0,
-      "kind regards": 0,
-      "best regards": 0
-    },
-    "contraction_count": 0,
-    "pronoun_ratios": {
-      "I": 0.0,
-      "we": 0.0410958904109589,
-      "you": 0.0136986301369863,
-      "they": 0.0
-    },
-    "hedge_count": 0,
-    "certainty_count": 0,
-    "modal_count": 0,
-    "passive_count": 1,
-    "greeting_found": true,
-    "closing_found": false,
-    "flesch_reading_ease": 81.83,
-    "flesch_kincaid_grade": 5.5,
-    "emoticon_count": 0,
-    "emoji_count": 0,
-    "bullet_points": 0,
-    "line_breaks": 7
-  },
-  {
-    "word_count": 73,
-    "sentence_count": 3,
-    "common_words": [
-      [
-        "a",
-        5
-      ],
-      [
-        "we",
-        3
-      ],
-      [
-        "oude",
-        3
-      ],
-      [
-        "delft",
-        3
-      ],
-      [
-        "bid",
-        2
-      ],
-      [
-        "feel",
-        2
-      ],
-      [
-        "it",
-        2
-      ],
-      [
-        "is",
-        2
-      ],
-      [
-        "to",
-        2
-      ],
-      [
-        "at",
-        2
-      ]
-    ],
-    "common_phrases": [
-      "Dear Rens",
-      "We",
-      "a bid",
-      "Oude Delft",
-      "a",
-      "it",
-      "it",
-      "Oude Delft",
-      "which",
-      "3.595 EUR/m^2"
-    ],
-    "pos_counts": {
-      "PROPN": 11,
-      "PUNCT": 7,
-      "SPACE": 5,
-      "PRON": 11,
-      "AUX": 4,
-      "ADJ": 2,
-      "ADP": 6,
-      "VERB": 10,
-      "DET": 3,
-      "NOUN": 3,
-      "NUM": 6,
-      "ADV": 1,
-      "SCONJ": 2,
-      "SYM": 1,
-      "PART": 1
-    },
-    "sentiment": 0.475,
-    "subjectivity": 0.7,
-    "exclamation_count": 0,
-    "question_count": 0,
-    "avg_sentence_length": 24.333333333333332,
-    "paragraph_count": 2,
-    "politeness_counts": {
-      "please": 0,
-      "thank you": 0,
-      "thanks": 0,
-      "kind regards": 0,
-      "best regards": 0
-    },
-    "contraction_count": 0,
-    "pronoun_ratios": {
-      "I": 0.0,
-      "we": 0.0410958904109589,
-      "you": 0.0136986301369863,
-      "they": 0.0
-    },
-    "hedge_count": 0,
-    "certainty_count": 0,
-    "modal_count": 0,
-    "passive_count": 1,
-    "greeting_found": true,
-    "closing_found": false,
-    "flesch_reading_ease": 81.83,
-    "flesch_kincaid_grade": 5.5,
-    "emoticon_count": 0,
-    "emoji_count": 0,
-    "bullet_points": 0,
-    "line_breaks": 7
-  },
-  {
-    "word_count": 27,
-    "sentence_count": 1,
-    "common_words": [
-      [
-        "to",
-        2
-      ],
-      [
-        "dear",
-        1
-      ],
-      [
-        "martijn",
-        1
-      ],
-      [
-        "i",
-        1
-      ],
-      [
-        "viewed",
-        1
-      ],
-      [
-        "oude",
-        1
-      ],
-      [
-        "delft",
-        1
-      ],
-      [
-        "a",
-        1
-      ],
-      [
-        "few",
-        1
-      ],
-      [
-        "weeks",
-        1
-      ]
-    ],
-    "common_phrases": [
-      "I",
-      "Oude Delft 60a",
-      "it",
-      "access",
-      "the documentation"
-    ],
-    "pos_counts": {
-      "PROPN": 4,
-      "PUNCT": 3,
-      "SPACE": 2,
-      "PRON": 2,
-      "VERB": 2,
-      "NOUN": 4,
-      "DET": 2,
-      "ADJ": 2,
-      "ADV": 1,
-      "AUX": 1,
-      "PART": 1,
-      "ADP": 2,
-      "NUM": 1
-    },
-    "sentiment": -0.1,
-    "subjectivity": 0.55,
-    "exclamation_count": 0,
-    "question_count": 1,
-    "avg_sentence_length": 27.0,
-    "paragraph_count": 1,
-    "politeness_counts": {
-      "please": 0,
-      "thank you": 0,
-      "thanks": 0,
-      "kind regards": 0,
-      "best regards": 0
-    },
-    "contraction_count": 0,
-    "pronoun_ratios": {
-      "I": 0.037037037037037035,
-      "we": 0.0,
-      "you": 0.0,
-      "they": 0.0
-    },
-    "hedge_count": 0,
-    "certainty_count": 0,
-    "modal_count": 0,
-    "passive_count": 0,
-    "greeting_found": true,
-    "closing_found": false,
-    "flesch_reading_ease": 57.61,
-    "flesch_kincaid_grade": 10.7,
-    "emoticon_count": 0,
-    "emoji_count": 0,
-    "bullet_points": 0,
-    "line_breaks": 3
-  },
-  {
-    "word_count": 24,
-    "sentence_count": 2,
-    "common_words": [
-      [
-        "hello",
-        1
-      ],
-      [
-        "rens",
-        1
-      ],
-      [
-        "it",
-        1
-      ],
-      [
-        "emil",
-        1
-      ],
-      [
-        "from",
-        1
-      ],
-      [
-        "friday",
-        1
-      ],
-      [
-        "i",
-        1
-      ],
-      [
-        "wondering",
-        1
-      ],
-      [
-        "if",
-        1
-      ],
-      [
-        "we",
-        1
-      ]
-    ],
-    "common_phrases": [
-      "Hello Rens",
-      "It",
-      "Emil",
-      "Friday",
-      "I",
-      "we",
-      "Jacob Catsstraat",
-      "Thursday"
-    ],
-    "pos_counts": {
-      "PROPN": 7,
-      "PUNCT": 3,
-      "SPACE": 2,
-      "PRON": 3,
-      "AUX": 3,
-      "ADP": 2,
-      "VERB": 2,
-      "SCONJ": 1,
-      "NUM": 1
-    },
-    "sentiment": 0.0,
-    "subjectivity": 0.0,
-    "exclamation_count": 0,
-    "question_count": 1,
-    "avg_sentence_length": 12.0,
-    "paragraph_count": 1,
-    "politeness_counts": {
-      "please": 0,
-      "thank you": 0,
-      "thanks": 0,
-      "kind regards": 0,
-      "best regards": 0
-    },
-    "contraction_count": 2,
-    "pronoun_ratios": {
-      "I": 0.041666666666666664,
-      "we": 0.041666666666666664,
-      "you": 0.0,
-      "they": 0.0
-    },
-    "hedge_count": 0,
-    "certainty_count": 0,
-    "modal_count": 0,
-    "passive_count": 0,
-    "greeting_found": true,
-    "closing_found": false,
-    "flesch_reading_ease": 79.77,
-    "flesch_kincaid_grade": 4.2,
-    "emoticon_count": 0,
-    "emoji_count": 0,
-    "bullet_points": 0,
-    "line_breaks": 3
+    "line_breaks": 4,
+    "positive_word_count": 0,
+    "negative_word_count": 0,
+    "frustration_word_count": 0,
+    "frustration_score": 0.0,
+    "emotional_tone": "neutral"
   }
 ]
