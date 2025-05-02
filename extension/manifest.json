@@ -26,7 +26,7 @@
     ],
     "host_permissions": [
         "https://mail.google.com/*",
-        "http://localhost:8000/*"
+        "http://localhost:27481/*"
     ],
     "oauth2": {
         "client_id": "641731081681-id6gblsjm80oag1onpl9vtakfihjk8q8.apps.googleusercontent.com",

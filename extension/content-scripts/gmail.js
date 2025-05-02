@@ -293,7 +293,7 @@ function injectWriteWiseButton() {
 async function sendToServer(data) {
     try {
         console.log('Sending data to server:', data);
-        const response = await fetch('http://localhost:8000/analyze', {
+        const response = await fetch('http://localhost:27481/analyze', {
             method: 'POST',
             headers: { 
                 'Content-Type': 'application/json'
@@ -321,7 +321,7 @@ document.addEventListener('click', async (event) => {
             const data = await getComposeData();
             console.log('Extracted data:', data);
             if (data) {
-                const response = await fetch('http://localhost:8000/context', {
+                const response = await fetch('http://localhost:27481/context', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)

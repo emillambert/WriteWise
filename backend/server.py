@@ -28,7 +28,7 @@ app = Flask(__name__)
 CORS(app, resources={r"/*": {
     "origins": [
         "https://mail.google.com",
-        "http://localhost:8000",
+        "http://localhost:27481",
         "chrome-extension://*"
     ],
     "methods": ["GET", "POST", "OPTIONS"],
@@ -221,7 +221,7 @@ def generate_cluster_visualization(user_dir, tone_axes_list, user_id, timestamp)
                        feature, fontsize=12)
         
         # Save the figure
-        viz_dir = os.path.join(user_dir, 'visualizations')
+        viz_dir = os.path.join(user_dir, 'analysis', 'visualizations')
         os.makedirs(viz_dir, exist_ok=True)
         viz_file = os.path.join(viz_dir, f'clusters_{timestamp}.png')
         plt.tight_layout()
@@ -334,8 +334,14 @@ def analyze():
         safe_user_id = user_id.replace('@', '_').replace('.', '_')
         user_dir = os.path.join(data_dir, safe_user_id)
         os.makedirs(user_dir, exist_ok=True)
-        data_filename = os.path.join(user_dir, f'data_{timestamp}.json')
-        tone_filename = os.path.join(user_dir, f'tone_{timestamp}.json')
+        
+        # Create analysis directory if it doesn't exist
+        analysis_dir = os.path.join(user_dir, "analysis")
+        os.makedirs(analysis_dir, exist_ok=True)
+        
+        data_filename = os.path.join(analysis_dir, f'data_{timestamp}.json')
+        tone_filename = os.path.join(analysis_dir, f'tone_{timestamp}.json')
+        
         # Save the raw data to a file
         try:
             with open(data_filename, 'w', encoding='utf-8') as f:
@@ -373,13 +379,14 @@ def analyze():
         if error_count > 0:
             logging.warning(f"{error_count} out of {len(emails)} emails failed analysis")
 
-        features_filename = os.path.join(user_dir, f'features_{timestamp}.json')
+        features_filename = os.path.join(analysis_dir, f'features_{timestamp}.json')
         try:
             with open(features_filename, 'w', encoding='utf-8') as f:
                 json.dump(features_list, f, indent=2, ensure_ascii=False)
         except Exception as file_err:
             logging.error(f"Failed to save features file: {file_err}")
-        tone_axes_filename = os.path.join(user_dir, f'tone_axes_{timestamp}.json')
+            
+        tone_axes_filename = os.path.join(analysis_dir, f'tone_axes_{timestamp}.json')
         try:
             with open(tone_axes_filename, 'w', encoding='utf-8') as f:
                 json.dump(tone_axes_list, f, indent=2, ensure_ascii=False)
@@ -468,7 +475,12 @@ def context_and_improve():
         user_dir = os.path.join(data_dir, safe_user_id)
         os.makedirs(user_dir, exist_ok=True)
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-        context_filename = os.path.join(user_dir, f'context_{timestamp}.json')
+        
+        # Create context directory if it doesn't exist
+        context_dir = os.path.join(user_dir, "context")
+        os.makedirs(context_dir, exist_ok=True)
+        
+        context_filename = os.path.join(context_dir, f'context_{timestamp}.json')
         
         # Save current context data
         try:
@@ -501,8 +513,23 @@ def context_and_improve():
             logging.info("No profile found, using latest tone data as fallback")
             tone_files = [f for f in os.listdir(user_dir) if f.startswith('tone_') and f.endswith('.json')]
             
-            if not tone_files:
-                # Create a tone file from the provided content
+            # Check in analysis folder if no files found in user_dir
+            if not tone_files and os.path.exists(os.path.join(user_dir, 'analysis')):
+                analysis_dir = os.path.join(user_dir, 'analysis')
+                tone_files = [f for f in os.listdir(analysis_dir) if f.startswith('tone_') and f.endswith('.json')]
+                if tone_files:
+                    latest_tone_file = os.path.join(analysis_dir, sorted(tone_files)[-1])
+                    logging.info(f"Using existing tone file from analysis folder: {os.path.basename(latest_tone_file)}")
+                    
+                    try:
+                        with open(latest_tone_file, 'r', encoding='utf-8') as f:
+                            user_profile = json.load(f)
+                    except Exception as file_err:
+                        logging.error(f"Failed to read tone file: {file_err}")
+                        return jsonify({'status': 'error', 'message': 'Failed to read tone data'}), 500
+                    
+            elif not tone_files:
+                # Create tone file from the provided content
                 content = data.get("content", "")
                 content_length = len(content) if content else 0
                 logging.info(f"No tone file found, creating new one from content (length={content_length})")
@@ -510,7 +537,12 @@ def context_and_improve():
                 try:
                     features = extract_email_features(content)
                     tone_axes = classify_tone_axes(features)
-                    tone_filename = os.path.join(user_dir, f'tone_{timestamp}.json')
+                    
+                    # Create analysis directory if it doesn't exist
+                    analysis_dir = os.path.join(user_dir, "analysis")
+                    os.makedirs(analysis_dir, exist_ok=True)
+                    
+                    tone_filename = os.path.join(analysis_dir, f'tone_{timestamp}.json')
                     with open(tone_filename, 'w', encoding='utf-8') as f:
                         json.dump(tone_axes, f, indent=2, ensure_ascii=False)
                     user_profile = tone_axes  # Use tone axes as profile fallback
@@ -573,4 +605,4 @@ def context_and_improve():
         return jsonify({'status': 'error', 'message': 'An internal error occurred. Please try again later.'}), 500
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=8000, debug=True) 
+    app.run(host='0.0.0.0', port=27481, debug=True) 

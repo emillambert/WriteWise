@@ -11,15 +11,49 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
 # Helper to find the latest file with a given prefix in a directory
 def get_latest_file(user_dir, prefix):
-    files = [f for f in os.listdir(user_dir) if f.startswith(prefix) and f.endswith('.json')]
+    """
+    Gets the latest file with a prefix from the appropriate directory.
+    Different file types are stored in different subdirectories.
+    
+    Args:
+        user_dir: Base user directory
+        prefix: File prefix (e.g., 'context_', 'improved_', 'tone_')
+        
+    Returns:
+        str: Path to the latest file or None if not found
+    """
+    # Define which directory to search based on prefix
+    if prefix.startswith('context_'):
+        search_dir = os.path.join(user_dir, "context")
+    elif prefix.startswith('improved_'):
+        search_dir = os.path.join(user_dir, "improved")
+    elif prefix.startswith('data_') or prefix.startswith('tone_') or prefix.startswith('features_') or prefix.startswith('tone_axes_'):
+        search_dir = os.path.join(user_dir, "analysis")
+    else:
+        search_dir = user_dir  # Default to base user directory
+    
+    # If the directory doesn't exist, check the base user directory as fallback
+    if not os.path.exists(search_dir):
+        search_dir = user_dir
+        
+    files = [f for f in os.listdir(search_dir) if f.startswith(prefix) and f.endswith('.json')]
     if not files:
-        return None
+        # If no files in the specific directory, check base directory as fallback
+        if search_dir != user_dir:
+            files = [f for f in os.listdir(user_dir) if f.startswith(prefix) and f.endswith('.json')]
+            if files:
+                search_dir = user_dir  # Use base directory for the file path
+            else:
+                return None
+        else:
+            return None
+            
     # Extract timestamp from filename using regex
     def extract_timestamp(f):
         m = re.search(r'_(\d{8}_\d{6})', f)
         return m.group(1) if m else ''
     files.sort(key=extract_timestamp, reverse=True)
-    return os.path.join(user_dir, files[0])
+    return os.path.join(search_dir, files[0])
 
 def load_json(path):
     with open(path, "r", encoding="utf-8") as f:
@@ -234,7 +268,7 @@ def query_chatgpt(prompt, recipients, profile, content, subject=""):
             "role": "user",
             "content": (
                 "Step 1: Based on the email context above (subject and recipients), "
-                "pick **one** of the style clusters by name and tell me which you chose and why.\n"
+                "pick **one** of the style clusters by name and tell me which you chose and why. make sure to use the context to make the best choice.\n"
                 "Step 2: Rewrite the draft email to match that cluster's tone, register, "
                 "and stylistic preferences. Preserve all necessary details.\n"
                 "Step 3: Output a JSON object with three keys:\n"
@@ -334,8 +368,12 @@ def save_improved_result(improved, validation_report, user_dir, user_id):
     # Add validation report to the improved result
     improved["validation"] = validation_report
     
+    # Create improved directory if it doesn't exist
+    improved_dir = os.path.join(user_dir, "improved")
+    os.makedirs(improved_dir, exist_ok=True)
+    
     improved_filename = f"improved_{timestamp}_{user_id}.json"
-    improved_path = os.path.join(user_dir, improved_filename)
+    improved_path = os.path.join(improved_dir, improved_filename)
     with open(improved_path, "w", encoding="utf-8") as f:
         json.dump(improved, f, indent=2, ensure_ascii=False)
     print(f"Saved improved result to {improved_path}")

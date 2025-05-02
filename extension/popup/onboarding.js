@@ -45,7 +45,7 @@ async function sendEmailsToServer(emails, userId) {
         user_id: userId,
         emails: emails
     };
-    const response = await fetch('http://localhost:8000/analyze', {
+    const response = await fetch('http://localhost:27481/analyze', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)

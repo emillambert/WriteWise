@@ -1,13 +1,13 @@
 {
   "formality": "informal",
-  "politeness": "blunt",
+  "politeness": "polite",
   "certainty": "hedged",
-  "greeting": "absent",
+  "greeting": "present",
   "closing": "absent",
-  "readability": 6.0,
+  "readability": 9.8,
   "emoji_usage": "none",
   "passive_voice": "absent",
-  "emotion": "neutral",
+  "emotion": "positive",
   "directness": "indirect",
-  "subjectivity_level": "objective"
+  "subjectivity_level": "personal"
 }
